@@ -15,6 +15,8 @@ one takes off as an agent run while you are still speaking.
 
 The backend (L0–L2) is a FastAPI process on port 8000; the page (L3) is a Next.js dev server on
 port 3000.
+How the layers work, and the tools, events and settings in detail, is in
+[`Architecture/architecture.md`](Architecture/architecture.md).
 
 ## Prerequisites
 
