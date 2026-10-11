@@ -1,0 +1,1406 @@
+/* The live page (`/`): a stage sized for a square 1080 × 1080 recording.
+ *
+ * Top to bottom: title, the L1 intent band, the L2 flight stack and the input dock. Everything is
+ * sized in em from `.stage`, which scales with the shorter side of the window, so a square window
+ * of any size records the same picture. L1 is a solid indigo band; flights are neutral cards with
+ * a stripe in their thread's colour, the same colour as their cut in the transcript. */
+
+.stage {
+  --bg: #05070d;
+  --surface: #101826;
+  --surface-2: #172234;
+  --edge: #2a3a55;
+  --ink: #f8fafc;
+  --soft: #c3cfdf;
+  --muted: #8d9bb2;
+  --intent: #1f1b5c;
+  --intent-2: #2b2580;
+  --intent-edge: #7c74ff;
+  --intent-ink: #e7e5ff;
+  --cyan: #22d3ee;
+  --violet: #b4a9ff;
+  --write: #ff6b5f;
+  --success: #4ade80;
+  --failure: #f87171;
+  --ask: #fbbf24;
+  --thread: #22d3ee;
+  --utility: "Cascadia Code", "SFMono-Regular", Consolas, monospace;
+
+  display: grid;
+  width: min(100%, 1600px);
+  height: 100vh;
+  height: 100dvh;
+  margin: 0 auto;
+  padding: 1em 1.4em 1.1em;
+  overflow: hidden;
+  gap: 0.9em;
+  grid-template-rows: auto auto minmax(0, 1fr) auto;
+  color: var(--ink);
+  font-family: "Segoe UI Variable Text", "Segoe UI", "Aptos", sans-serif;
+  font-size: clamp(14px, 1.9vmin, 26px);
+  line-height: 1.35;
+  color-scheme: dark;
+}
+
+body:has(.stage) {
+  background: var(--bg, #05070d);
+}
+
+.stage button:focus-visible,
+.stage input:focus-visible,
+.stage a:focus-visible {
+  outline: 2px solid var(--cyan);
+  outline-offset: 3px;
+}
+
+/* Title ----------------------------------------------------------------------------------------- */
+
+.stage-header {
+  display: flex;
+  align-items: center;
+  gap: 1em;
+}
+
+.stage-header h1 {
+  margin: 0;
+  font-size: 1.45em;
+  font-weight: 800;
+  letter-spacing: -0.01em;
+  line-height: 1.1;
+}
+
+.stage-header h1 em {
+  background: linear-gradient(90deg, var(--cyan), var(--violet));
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+  font-style: normal;
+}
+
+.stage-header h1 span {
+  font-size: 0.75em;
+}
+
+.stage-environment {
+  margin-left: auto;
+  padding: 0.25em 0.75em;
+  border: 1px solid var(--edge);
+  border-radius: 999px;
+  color: var(--soft);
+  font-size: 0.75em;
+  font-weight: 600;
+  white-space: nowrap;
+}
+
+/* Zone captions: L1 and L2 ------------------------------------------------------------------------ */
+
+.stage .zone-caption {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 0.35em 0.7em;
+}
+
+.stage .layer-mark {
+  display: inline-grid;
+  width: 2.1em;
+  height: 1.55em;
+  place-items: center;
+  border-radius: 0.4em;
+  background: var(--ink);
+  color: var(--bg);
+  font-family: var(--utility);
+  font-size: 0.8em;
+  font-weight: 800;
+}
+
+.stage .zone-caption strong {
+  font-size: 1.05em;
+  font-weight: 800;
+  letter-spacing: 0.02em;
+  text-transform: uppercase;
+}
+
+.stage .zone-model {
+  color: var(--soft);
+  font-family: var(--utility);
+  font-size: 0.75em;
+}
+
+.stage .zone-stat {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.4em;
+  color: var(--muted);
+  font-family: var(--utility);
+  font-size: 0.75em;
+}
+
+.stage .live-dot {
+  width: 0.65em;
+  height: 0.65em;
+  border-radius: 50%;
+  background: var(--write);
+  box-shadow: 0 0 0 0.25em rgba(255, 107, 95, 0.25);
+  animation: stage-pulse 1.1s ease-in-out infinite;
+}
+
+/* L1: intent band ------------------------------------------------------------------------------- */
+
+.stage .hold-panel {
+  display: grid;
+  gap: 0.75em;
+  padding: 0.85em 1em 0.95em;
+  border: 2px solid var(--intent-edge);
+  border-radius: 1em;
+  background: linear-gradient(135deg, var(--intent) 0%, #161447 55%, #10133d 100%);
+  color: var(--intent-ink);
+  box-shadow: 0 0.6em 2em rgba(80, 70, 255, 0.18);
+  transition: box-shadow 200ms ease, border-color 200ms ease;
+}
+
+.stage .hold-panel[data-listening="true"] {
+  border-color: #a39dff;
+  box-shadow: 0 0 0 0.25em rgba(124, 116, 255, 0.28), 0 0.6em 2em rgba(80, 70, 255, 0.3);
+}
+
+.stage .hold-panel .layer-mark {
+  background: var(--intent-edge);
+  color: #ffffff;
+}
+
+.stage .hold-panel .zone-model,
+.stage .hold-panel .zone-stat {
+  color: #b9b5ef;
+}
+
+.stage .hold-reading {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.4em;
+  margin-left: auto;
+}
+
+.stage .hold-body {
+  display: grid;
+  grid-template-columns: minmax(13em, 0.8fr) minmax(0, 1.6fr);
+  align-items: start;
+  gap: 1.3em;
+}
+
+.stage .probability-race {
+  position: relative;
+  height: calc(4 * 1.75em);
+  transition: opacity 300ms ease;
+}
+
+.stage .probability-race[data-stale="true"] {
+  opacity: 0.5;
+}
+
+.stage .race-row {
+  position: absolute;
+  top: 0;
+  right: 0;
+  left: 0;
+  display: grid;
+  grid-template-columns: 5.6em minmax(0, 1fr) 3em;
+  align-items: center;
+  gap: 0.55em;
+  height: 1.55em;
+  color: #c9c6f5;
+  font-size: 0.85em;
+  transform: translateY(calc(var(--rank) * 2.06em));
+  transition: transform 260ms cubic-bezier(0.2, 0.9, 0.3, 1);
+}
+
+.stage .race-row span {
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.stage .race-row i {
+  height: 0.75em;
+  overflow: hidden;
+  border-radius: 0.4em;
+  background: rgba(255, 255, 255, 0.12);
+}
+
+.stage .race-row b {
+  display: block;
+  width: calc(var(--p) * 100%);
+  height: 100%;
+  border-radius: inherit;
+  background: #8a83e8;
+  transition: width 260ms ease;
+}
+
+.stage .race-row[data-leader="true"] {
+  color: #ffffff;
+  font-weight: 800;
+}
+
+.stage .race-row[data-leader="true"] b {
+  background: linear-gradient(90deg, var(--cyan), #a5f3fc);
+  box-shadow: 0 0 0.8em rgba(34, 211, 238, 0.55);
+}
+
+.stage .race-row strong {
+  font-family: var(--utility);
+  font-size: 0.9em;
+  text-align: right;
+}
+
+.stage .race-empty {
+  color: #a9a5e0;
+  font-size: 0.85em;
+}
+
+.stage .anchored-transcript {
+  display: flex;
+  flex-wrap: wrap;
+  align-content: flex-start;
+  gap: 0.15em 0.3em;
+  max-height: 7.4em;
+  min-height: 3.2em;
+  margin: 0;
+  overflow: hidden;
+  color: #ffffff;
+  font-size: 1.15em;
+  font-weight: 600;
+  line-height: 1.25;
+  scroll-behavior: smooth;
+}
+
+.stage .anchored-transcript.is-empty {
+  align-items: center;
+  color: #a9a5e0;
+  font-size: 0.95em;
+  font-weight: 400;
+}
+
+.stage .word-group {
+  display: inline-flex;
+  align-items: flex-start;
+  gap: 0.3em;
+}
+
+.stage .word-slot {
+  position: relative;
+  display: inline-flex;
+  min-height: 2.25em;
+  flex-direction: column;
+  align-items: flex-start;
+}
+
+.stage .word-slot .word {
+  position: relative;
+  padding: 0 0.12em;
+  border-bottom: 0.14em solid transparent;
+  border-radius: 0.15em;
+}
+
+.stage .word-slot[data-state="current"] .word {
+  background: rgba(255, 255, 255, 0.12);
+}
+
+.stage .word-slot[data-state="cut"] .word {
+  border-bottom-color: var(--thread);
+}
+
+.stage .word-slot[data-state="heard"] .word {
+  color: #8f8bd0;
+}
+
+.stage .word-slot[data-state="dropped"] .word {
+  color: #8f8bd0;
+  text-decoration: line-through;
+}
+
+.stage .word-skipped {
+  position: absolute;
+  top: 0;
+  right: -0.15em;
+  width: 0.3em;
+  height: 0.3em;
+  border-radius: 50%;
+  background: var(--ask);
+}
+
+.stage .word-flip {
+  color: #c7c2ff;
+  font-family: var(--utility);
+  font-size: 0.52em;
+  font-weight: 500;
+  white-space: nowrap;
+  animation: stage-arrive 400ms ease both;
+}
+
+.stage .word-cut {
+  align-self: flex-start;
+  margin: 0.12em 0.25em 0 0.05em;
+  padding: 0.12em 0.4em;
+  border-radius: 0.3em;
+  background: var(--thread);
+  color: #05070d;
+  font-family: var(--utility);
+  font-size: 0.6em;
+  font-weight: 800;
+  white-space: nowrap;
+  animation: stage-arrive 300ms ease both;
+}
+
+.stage .word-cut[data-dropped="true"] {
+  background: #5d5a8f;
+  color: #ffffff;
+}
+
+.stage .revision-note {
+  flex-basis: 100%;
+  color: var(--ask);
+  font-family: var(--utility);
+  font-size: 0.6em;
+}
+
+/* Chips ----------------------------------------------------------------------------------------- */
+
+.stage .table-chips,
+.stage .segment-chips {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.35em;
+}
+
+.stage .table-chips[data-stale="true"] {
+  opacity: 0.55;
+}
+
+.stage .table-chip,
+.stage .archetype-chip,
+.stage .write-badge,
+.stage .chart-badge,
+.stage .ref-badge,
+.stage .complete-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.35em;
+  padding: 0.18em 0.6em;
+  border: 1px solid var(--edge);
+  border-radius: 999px;
+  color: var(--muted);
+  font-size: 0.72em;
+  font-weight: 600;
+  line-height: 1.3;
+  white-space: nowrap;
+  transition: background 220ms ease, border-color 220ms ease, color 220ms ease;
+}
+
+.stage .table-chip small,
+.stage .archetype-chip small {
+  font-family: var(--utility);
+  font-size: 0.85em;
+  opacity: 0.8;
+}
+
+.stage .hold-panel .table-chip {
+  border-color: rgba(185, 181, 239, 0.3);
+  color: #a9a6e6;
+}
+
+.stage .table-chip[data-state="warm"],
+.stage .hold-panel .table-chip[data-state="warm"] {
+  border-color: rgba(34, 211, 238, 0.5);
+  color: #a5f3fc;
+}
+
+.stage .table-chip[data-state="lit"],
+.stage .hold-panel .table-chip[data-state="lit"] {
+  border-color: var(--cyan);
+  background: rgba(34, 211, 238, 0.16);
+  color: #ffffff;
+}
+
+.stage .table-chip[data-state="primary"],
+.stage .hold-panel .table-chip[data-state="primary"] {
+  border-color: var(--cyan);
+  background: var(--cyan);
+  color: #05070d;
+  font-weight: 800;
+}
+
+.stage .archetype-chip {
+  border-color: var(--violet);
+  background: rgba(180, 169, 255, 0.16);
+  color: #e4e0ff;
+  font-weight: 800;
+}
+
+.stage .write-badge {
+  border-color: var(--write);
+  background: rgba(255, 107, 95, 0.18);
+  color: #ffb3ac;
+  font-weight: 800;
+}
+
+.stage .chart-badge {
+  border-color: var(--success);
+  background: rgba(74, 222, 128, 0.16);
+  color: #bbf7d0;
+  font-weight: 800;
+}
+
+.stage .ref-badge {
+  border-color: var(--thread);
+  background: color-mix(in srgb, var(--thread) 18%, transparent);
+  color: #ffffff;
+  font-weight: 800;
+}
+
+.stage button.ref-badge {
+  cursor: pointer;
+}
+
+.stage .complete-badge {
+  border-color: rgba(185, 181, 239, 0.4);
+  color: #d6d3ff;
+  font-family: var(--utility);
+}
+
+/* L2: flight stack ------------------------------------------------------------------------------ */
+
+.stage .airspace {
+  display: flex;
+  min-height: 0;
+  flex-direction: column;
+  gap: 0.6em;
+  padding-top: 0.8em;
+  border-top: 2px dashed var(--edge);
+}
+
+.stage .airspace > .zone-caption .layer-mark {
+  background: var(--cyan);
+}
+
+.stage .flight-stack {
+  display: flex;
+  min-height: 0;
+  flex: 1;
+  flex-direction: column;
+  gap: 0.6em;
+  overflow-y: auto;
+  padding-right: 0.2em;
+  scrollbar-color: var(--edge) transparent;
+  scrollbar-width: thin;
+}
+
+.stage .flight-card {
+  position: relative;
+  display: grid;
+  flex: none;
+  gap: 0.5em;
+  padding: 0.7em 0.9em 0.75em 1.15em;
+  border: 1px solid var(--edge);
+  border-radius: 0.8em;
+  background: var(--surface);
+  animation: stage-drop 450ms cubic-bezier(0.16, 1, 0.3, 1) both;
+  transition: box-shadow 200ms ease, border-color 200ms ease;
+}
+
+.stage .flight-card::before {
+  position: absolute;
+  top: 0.55em;
+  bottom: 0.55em;
+  left: 0.4em;
+  width: 0.28em;
+  border-radius: 0.2em;
+  background: var(--thread);
+  content: "";
+}
+
+.stage .flight-card[data-highlight="true"] {
+  border-color: var(--thread);
+  box-shadow: 0 0 0 0.2em color-mix(in srgb, var(--thread) 35%, transparent);
+}
+
+.stage .flight-header {
+  display: grid;
+  grid-template-columns: auto minmax(0, 1fr) auto;
+  align-items: center;
+  gap: 0.7em;
+}
+
+.stage .flight-number {
+  padding: 0.12em 0.45em;
+  border-radius: 0.35em;
+  background: var(--thread);
+  color: #05070d;
+  font-family: var(--utility);
+  font-size: 0.85em;
+  font-weight: 800;
+}
+
+.stage .flight-query {
+  margin: 0;
+  overflow: hidden;
+  font-size: 1.05em;
+  font-weight: 700;
+  line-height: 1.25;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.stage .flight-query::before,
+.stage .flight-query::after {
+  color: var(--muted);
+}
+
+.stage .flight-query::before {
+  content: "“";
+}
+
+.stage .flight-query::after {
+  content: "”";
+}
+
+.stage .flight-status {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.45em;
+  padding: 0.2em 0.65em;
+  border-radius: 999px;
+  background: rgba(34, 211, 238, 0.14);
+  color: #a5f3fc;
+  font-size: 0.75em;
+  white-space: nowrap;
+}
+
+.stage .flight-status strong {
+  font-weight: 800;
+}
+
+.stage .flight-status time {
+  font-family: var(--utility);
+}
+
+.stage .flight-status[data-status="succeeded"] {
+  background: rgba(74, 222, 128, 0.16);
+  color: #bbf7d0;
+}
+
+.stage .flight-status[data-status="failed"] {
+  background: rgba(248, 113, 113, 0.18);
+  color: #fecaca;
+}
+
+.stage .signal-glyph {
+  display: inline-flex;
+  height: 0.9em;
+  align-items: center;
+  gap: 0.12em;
+}
+
+.stage .signal-glyph i {
+  width: 0.14em;
+  height: 35%;
+  border-radius: 0.1em;
+  background: currentColor;
+}
+
+.stage .signal-glyph i:nth-child(2),
+.stage .signal-glyph i:nth-child(4) {
+  height: 65%;
+}
+
+.stage .signal-glyph i:nth-child(3) {
+  height: 100%;
+}
+
+.stage .signal-glyph.is-active i {
+  animation: stage-signal 900ms ease-in-out infinite;
+}
+
+.stage .signal-glyph.is-active i:nth-child(2) { animation-delay: 120ms; }
+.stage .signal-glyph.is-active i:nth-child(3) { animation-delay: 240ms; }
+.stage .signal-glyph.is-active i:nth-child(4) { animation-delay: 360ms; }
+.stage .signal-glyph.is-active i:nth-child(5) { animation-delay: 480ms; }
+
+.stage .flight-card .segment-chips {
+  padding-left: 0.1em;
+}
+
+.stage .tool-rows {
+  display: grid;
+  gap: 0.3em;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.stage .tool-row {
+  display: grid;
+  grid-template-columns: 4.4em minmax(0, 1fr) auto auto;
+  align-items: baseline;
+  gap: 0.7em;
+  padding: 0.3em 0.6em;
+  border-radius: 0.45em;
+  background: var(--surface-2);
+  font-size: 0.78em;
+  animation: stage-arrive 300ms ease both;
+}
+
+.stage .tool-row[data-write="true"] {
+  background: rgba(255, 107, 95, 0.14);
+  box-shadow: inset 0.22em 0 0 var(--write);
+}
+
+.stage .tool-row[data-status="failed"] {
+  background: rgba(248, 113, 113, 0.14);
+  box-shadow: inset 0.22em 0 0 var(--failure);
+}
+
+.stage .tool-verb {
+  color: var(--cyan);
+  font-weight: 800;
+}
+
+.stage .tool-row[data-write="true"] .tool-verb {
+  color: #ff9a91;
+}
+
+.stage .tool-target {
+  overflow: hidden;
+  color: var(--soft);
+  font-family: var(--utility);
+  font-size: 0.92em;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.stage .tool-outcome {
+  color: var(--ink);
+  font-weight: 700;
+  white-space: nowrap;
+}
+
+.stage .tool-row[data-status="failed"] .tool-outcome {
+  color: var(--failure);
+}
+
+.stage .tool-outcome a {
+  color: var(--cyan);
+}
+
+.stage .tool-open {
+  padding: 0;
+  border: 0;
+  background: none;
+  color: var(--cyan);
+  font: inherit;
+  cursor: pointer;
+}
+
+.stage .tool-row time {
+  color: var(--muted);
+  font-family: var(--utility);
+  font-size: 0.9em;
+}
+
+.stage .tool-rows-empty {
+  margin: 0;
+  color: var(--muted);
+  font-size: 0.78em;
+}
+
+.stage .flight-answer {
+  font-size: 0.92em;
+}
+
+.stage .response-placeholder {
+  margin: 0;
+  color: var(--muted);
+  font-style: italic;
+}
+
+.stage .markdown-response {
+  color: var(--ink);
+  line-height: 1.45;
+}
+
+.stage .markdown-response > :first-child {
+  margin-top: 0;
+}
+
+.stage .markdown-response > :last-child {
+  margin-bottom: 0;
+}
+
+.stage .markdown-response p,
+.stage .markdown-response ul,
+.stage .markdown-response ol {
+  margin: 0.35em 0;
+}
+
+.stage .markdown-response ul,
+.stage .markdown-response ol {
+  padding-left: 1.3em;
+}
+
+.stage .markdown-response h1,
+.stage .markdown-response h2,
+.stage .markdown-response h3 {
+  margin: 0.5em 0 0.25em;
+  font-size: 1em;
+}
+
+.stage .markdown-response strong {
+  color: #ffffff;
+}
+
+.stage .markdown-response a {
+  color: var(--cyan);
+}
+
+.stage .markdown-response code {
+  padding: 0.05em 0.3em;
+  border-radius: 0.25em;
+  background: var(--surface-2);
+  font-family: var(--utility);
+  font-size: 0.88em;
+}
+
+.stage .markdown-response table {
+  border-collapse: collapse;
+  font-size: 0.9em;
+}
+
+.stage .markdown-response th,
+.stage .markdown-response td {
+  padding: 0.25em 0.6em;
+  border: 1px solid var(--edge);
+  text-align: left;
+}
+
+.stage .markdown-response th {
+  background: var(--surface-2);
+}
+
+.stage .stream-caret {
+  display: inline-block;
+  width: 0.5em;
+  height: 1em;
+  margin-left: 0.15em;
+  vertical-align: -0.15em;
+  background: var(--cyan);
+  animation: stage-blink 900ms steps(2) infinite;
+}
+
+/* The agent asks back: the loudest thing on the card. */
+.stage .flight-interrupt {
+  display: grid;
+  gap: 0.5em;
+  padding: 0.7em 0.8em;
+  border: 2px solid var(--ask);
+  border-radius: 0.6em;
+  background: rgba(251, 191, 36, 0.12);
+  animation: stage-arrive 300ms ease both;
+}
+
+.stage .interrupt-flare {
+  display: none;
+}
+
+.stage .flight-interrupt span {
+  color: var(--ask);
+  font-size: 0.72em;
+  font-weight: 800;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+}
+
+.stage .flight-interrupt strong {
+  display: block;
+  margin-top: 0.15em;
+  font-size: 1.05em;
+}
+
+.stage .interrupt-answer {
+  display: flex;
+  gap: 0.5em;
+}
+
+.stage .interrupt-answer input {
+  min-width: 0;
+  flex: 1;
+  padding: 0.4em 0.6em;
+  border: 1px solid var(--edge);
+  border-radius: 0.4em;
+  background: var(--bg);
+}
+
+.stage .interrupt-answer button {
+  padding: 0.4em 0.9em;
+  border: 0;
+  border-radius: 0.4em;
+  background: var(--ask);
+  color: #05070d;
+  font-weight: 800;
+}
+
+.stage .flight-error {
+  padding: 0.45em 0.7em;
+  border-radius: 0.45em;
+  background: rgba(248, 113, 113, 0.16);
+  color: #fecaca;
+  font-size: 0.8em;
+}
+
+.stage .empty-airspace {
+  display: grid;
+  flex: 1;
+  place-content: center;
+  gap: 0.35em;
+  border: 2px dashed var(--edge);
+  border-radius: 1em;
+  color: var(--muted);
+  text-align: center;
+}
+
+.stage .empty-airspace strong {
+  color: var(--soft);
+  font-size: 1.5em;
+}
+
+/* Input dock ------------------------------------------------------------------------------------ */
+
+.stage .input-dock {
+  display: grid;
+  gap: 0.5em;
+}
+
+/* The talk button is centred; the typed-input box (when enabled on /admin) sits to its left and
+ * the links to its right. */
+.stage .dock-row {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) auto minmax(0, 1fr);
+  align-items: center;
+  gap: 0.8em;
+}
+
+.stage .dock-row .talk-button {
+  grid-column: 2;
+}
+
+.stage .dock-row .dock-links {
+  grid-column: 3;
+  justify-content: flex-end;
+}
+
+.stage .dock-row form {
+  grid-column: 1;
+  display: flex;
+  gap: 0.4em;
+  padding: 0.3em;
+  border: 1px solid var(--edge);
+  border-radius: 0.7em;
+  background: var(--surface);
+}
+
+.stage .dock-row input {
+  min-width: 0;
+  flex: 1;
+  padding: 0.35em 0.6em;
+  border: 0;
+  background: transparent;
+  color: var(--ink);
+  font-size: 0.9em;
+  outline: none;
+}
+
+.stage .dock-row input::placeholder {
+  color: var(--muted);
+}
+
+.stage .dock-row form button {
+  padding: 0.35em 0.9em;
+  border: 0;
+  border-radius: 0.5em;
+  background: var(--cyan);
+  color: #05070d;
+  font-size: 0.9em;
+  font-weight: 800;
+}
+
+.stage .talk-button {
+  display: flex;
+  height: 2.6em;
+  min-width: 10em;
+  align-items: center;
+  justify-content: center;
+  gap: 0.55em;
+  padding: 0 1.2em;
+  border: 2px solid var(--cyan);
+  border-radius: 999px;
+  background: rgba(34, 211, 238, 0.12);
+  color: #ffffff;
+  font-size: 0.95em;
+  touch-action: none;
+  user-select: none;
+}
+
+.stage .talk-button strong {
+  font-weight: 800;
+}
+
+.stage .talk-button[data-state="recording"] {
+  border-color: var(--write);
+  background: var(--write);
+  box-shadow: 0 0 0 0.3em rgba(255, 107, 95, 0.3);
+}
+
+.stage .dock-links {
+  display: flex;
+  align-items: center;
+  gap: 0.8em;
+  font-size: 0.7em;
+}
+
+.stage .dock-links small {
+  max-width: 12em;
+  overflow: hidden;
+  color: var(--muted);
+  font-size: 1em;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.stage .dock-links a {
+  color: var(--soft);
+}
+
+.stage .dock-links button {
+  padding: 0.35em 0.8em;
+  border: 1px solid var(--edge);
+  border-radius: 0.5em;
+  background: transparent;
+}
+
+.stage .dock-error,
+.stage .dock-notice {
+  display: flex;
+  align-items: center;
+  gap: 0.7em;
+  padding: 0.4em 0.7em;
+  border-radius: 0.5em;
+  background: rgba(248, 113, 113, 0.16);
+  color: #fecaca;
+  font-size: 0.78em;
+}
+
+.stage .dock-notice {
+  background: rgba(251, 191, 36, 0.14);
+  color: #fde68a;
+}
+
+.stage .dock-error span,
+.stage .dock-notice span {
+  font-weight: 800;
+  text-transform: uppercase;
+}
+
+.stage .dock-error button,
+.stage .dock-notice button {
+  margin-left: auto;
+  border: 0;
+  background: transparent;
+  font-size: 1.2em;
+}
+
+/* Chart widget: the right column of a flight card (show_chart) -------------------------------- */
+
+.stage .flight-body {
+  display: grid;
+  gap: 0.5em 0.9em;
+}
+
+.stage .flight-main {
+  display: grid;
+  align-content: start;
+  gap: 0.5em;
+  min-width: 0;
+}
+
+.stage .flight-body[data-chart="true"] {
+  grid-template-columns: minmax(0, 3fr) minmax(0, 2fr);
+}
+
+.stage .flight-chart {
+  display: grid;
+  align-content: start;
+  gap: 0.45em;
+  min-width: 0;
+  margin: 0;
+  padding: 0.55em 0.7em 0.65em;
+  border: 1px solid color-mix(in srgb, var(--thread) 45%, var(--edge));
+  border-radius: 0.6em;
+  background: var(--surface-2);
+  animation: stage-arrive 350ms ease both;
+}
+
+.stage .flight-chart figcaption {
+  display: grid;
+  gap: 0.05em;
+}
+
+.stage .flight-chart figcaption strong {
+  font-size: 0.82em;
+  line-height: 1.25;
+}
+
+.stage .flight-chart figcaption small,
+.stage .chart-empty {
+  margin: 0;
+  color: var(--muted);
+  font-size: 0.68em;
+}
+
+.stage .chart-label {
+  overflow: hidden;
+  color: var(--soft);
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.stage .chart-value {
+  color: var(--ink);
+  font-family: var(--utility);
+  font-weight: 700;
+  text-align: right;
+}
+
+.stage .chart-bars {
+  display: grid;
+  gap: 0.28em;
+  margin: 0;
+  padding: 0;
+  font-size: 0.7em;
+  list-style: none;
+}
+
+.stage .chart-bars li {
+  display: grid;
+  grid-template-columns: minmax(0, 7.5em) minmax(0, 1fr) auto;
+  align-items: center;
+  gap: 0.55em;
+}
+
+.stage .chart-track {
+  height: 0.95em;
+  border-radius: 0.25em;
+  background: rgba(141, 155, 178, 0.14);
+}
+
+.stage .chart-track i {
+  display: block;
+  height: 100%;
+  border-radius: 0.25em;
+  background: linear-gradient(90deg, color-mix(in srgb, var(--thread) 70%, transparent), var(--thread));
+  transform-origin: left;
+  animation: chart-grow 600ms cubic-bezier(0.16, 1, 0.3, 1) both;
+  animation-delay: calc(var(--i, 0) * 45ms);
+}
+
+.stage .chart-donut {
+  display: grid;
+  grid-template-columns: 6.2em minmax(0, 1fr);
+  align-items: center;
+  gap: 0.7em;
+}
+
+.stage .chart-donut svg {
+  width: 100%;
+  transform: rotate(0deg);
+}
+
+.stage .donut-hole {
+  fill: none;
+  stroke: rgba(141, 155, 178, 0.14);
+  stroke-width: 7;
+}
+
+.stage .donut-slice {
+  fill: none;
+  stroke-width: 7;
+  animation: chart-fade 500ms ease both;
+  animation-delay: calc(var(--i, 0) * 70ms);
+}
+
+.stage .donut-total {
+  fill: var(--ink);
+  font-family: var(--utility);
+  font-size: 5px;
+  font-weight: 700;
+}
+
+.stage .chart-legend {
+  display: grid;
+  gap: 0.22em;
+  margin: 0;
+  padding: 0;
+  font-size: 0.68em;
+  list-style: none;
+}
+
+.stage .chart-legend li {
+  display: grid;
+  grid-template-columns: 0.7em minmax(0, 1fr) auto;
+  align-items: center;
+  gap: 0.45em;
+}
+
+.stage .chart-legend i {
+  width: 0.7em;
+  height: 0.7em;
+  border-radius: 0.2em;
+}
+
+.stage .chart-line {
+  position: relative;
+  display: grid;
+  gap: 0.2em;
+  padding-top: 0.9em;
+}
+
+.stage .line-plot {
+  position: relative;
+  height: 6.5em;
+  margin: 0.35em 0.4em 0.2em;
+  animation: chart-reveal 900ms cubic-bezier(0.16, 1, 0.3, 1) both;
+}
+
+.stage .line-plot svg {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  overflow: visible;
+}
+
+.stage .chart-max {
+  position: absolute;
+  top: 0;
+  left: 0;
+  color: var(--muted);
+  font-family: var(--utility);
+  font-size: 0.62em;
+}
+
+.stage .line-axis {
+  stroke: var(--edge);
+  stroke-width: 1;
+  vector-effect: non-scaling-stroke;
+}
+
+.stage .line-area {
+  fill: color-mix(in srgb, var(--thread) 22%, transparent);
+}
+
+.stage .line-path {
+  fill: none;
+  stroke: var(--thread);
+  stroke-linecap: round;
+  stroke-linejoin: round;
+  stroke-width: 3;
+  vector-effect: non-scaling-stroke;
+}
+
+.stage .line-dot {
+  position: absolute;
+  width: 0.5em;
+  height: 0.5em;
+  border: 0.12em solid var(--surface-2);
+  border-radius: 50%;
+  background: var(--thread);
+  transform: translate(-50%, -50%);
+}
+
+.stage .line-ticks {
+  position: relative;
+  height: 1.2em;
+  font-size: 0.6em;
+}
+
+.stage .line-ticks span {
+  position: absolute;
+  top: 0;
+  color: var(--muted);
+  font-family: var(--utility);
+  white-space: nowrap;
+  transform: translateX(-50%);
+}
+
+.stage .line-ticks span:first-child {
+  transform: none;
+}
+
+.stage .line-ticks span:last-child {
+  transform: translateX(-100%);
+}
+
+.stage .line-ticks span[data-shown="false"] {
+  display: none;
+}
+
+/* Record dialog: open_record shows the record in the model-driven app ------------------------- */
+
+.stage .record-backdrop {
+  position: fixed;
+  z-index: 40;
+  inset: 0;
+  display: grid;
+  place-items: center;
+  padding: 2.5vmin;
+  background: rgba(2, 4, 9, 0.72);
+  backdrop-filter: blur(3px);
+  animation: chart-fade 200ms ease both;
+}
+
+.stage .record-modal {
+  display: grid;
+  width: min(100%, 1500px);
+  height: 100%;
+  overflow: hidden;
+  border: 2px solid var(--thread);
+  border-radius: 0.9em;
+  background: var(--surface);
+  box-shadow: 0 1.5em 4em rgba(0, 0, 0, 0.6);
+  grid-template-rows: auto minmax(0, 1fr);
+  animation: stage-drop 380ms cubic-bezier(0.16, 1, 0.3, 1) both;
+}
+
+.stage .record-header {
+  display: grid;
+  grid-template-columns: auto minmax(0, 1fr) auto auto;
+  align-items: center;
+  gap: 0.8em;
+  padding: 0.55em 0.8em;
+  border-bottom: 1px solid var(--edge);
+}
+
+.stage .record-header div {
+  display: grid;
+  min-width: 0;
+}
+
+.stage .record-header strong {
+  overflow: hidden;
+  font-size: 1.05em;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.stage .record-header small {
+  color: var(--muted);
+  font-size: 0.75em;
+}
+
+.stage .record-window,
+.stage .record-close {
+  padding: 0.35em 0.75em;
+  border: 1px solid var(--edge);
+  border-radius: 0.5em;
+  background: var(--surface-2);
+  color: var(--ink);
+  font: inherit;
+  font-size: 0.8em;
+  font-weight: 700;
+  cursor: pointer;
+}
+
+.stage .record-close {
+  padding-inline: 0.65em;
+}
+
+.stage .record-frame {
+  width: 100%;
+  height: 100%;
+  border: 0;
+  background: #ffffff;
+}
+
+/* Narrow or tall windows: race above the transcript, charts below the answer. */
+@media (max-aspect-ratio: 4/5) {
+  .stage .hold-body {
+    grid-template-columns: 1fr;
+  }
+
+  .stage .flight-body[data-chart="true"] {
+    grid-template-columns: 1fr;
+  }
+
+  .stage .dock-row[data-typed="true"] form {
+    grid-column: 1 / -1;
+  }
+}
+
+@keyframes stage-drop {
+  from {
+    opacity: 0;
+    transform: translateY(-0.8em) scale(0.98);
+  }
+}
+
+@keyframes stage-arrive {
+  from {
+    opacity: 0;
+    transform: translateY(0.3em);
+  }
+}
+
+@keyframes stage-pulse {
+  50% {
+    opacity: 0.4;
+  }
+}
+
+@keyframes stage-signal {
+  50% {
+    transform: scaleY(0.4);
+  }
+}
+
+@keyframes stage-blink {
+  50% {
+    opacity: 0;
+  }
+}
+
+@keyframes chart-grow {
+  from {
+    transform: scaleX(0);
+  }
+}
+
+@keyframes chart-fade {
+  from {
+    opacity: 0;
+  }
+}
+
+@keyframes chart-reveal {
+  from {
+    clip-path: inset(-1em 100% -1em -1em);
+  }
+
+  to {
+    clip-path: inset(-1em -1em -1em -1em);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .stage *,
+  .stage *::before {
+    animation: none !important;
+    transition: none !important;
+  }
+}

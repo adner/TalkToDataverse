@@ -1,0 +1,2959 @@
+{
+ "environment": "https://<your-org>.crm.dynamics.com/",
+ "tables": {
+  "account": {
+   "name": "account",
+   "entity_set": "accounts",
+   "primary_id": "accountid",
+   "primary_name": "name",
+   "label": "Account",
+   "description": "Business that represents a customer or potential customer. The company that is billed in business transactions.",
+   "columns": {
+    "accountnumber": {
+     "name": "accountnumber",
+     "type": "String",
+     "label": "Account Number",
+     "description": "Type an ID number or code for the account to quickly search and identify the account in system views.",
+     "create": true,
+     "update": true,
+     "targets": [],
+     "nav": null,
+     "options": {}
+    },
+    "address1_city": {
+     "name": "address1_city",
+     "type": "String",
+     "label": "Address 1: City",
+     "description": "Type the city for the primary address.",
+     "create": true,
+     "update": true,
+     "targets": [],
+     "nav": null,
+     "options": {}
+    },
+    "address1_country": {
+     "name": "address1_country",
+     "type": "String",
+     "label": "Address 1: Country/Region",
+     "description": "Type the country or region for the primary address.",
+     "create": true,
+     "update": true,
+     "targets": [],
+     "nav": null,
+     "options": {}
+    },
+    "cb_accountmanager": {
+     "name": "cb_accountmanager",
+     "type": "String",
+     "label": "Account Manager",
+     "description": "Name of the Contoso Bikes account manager responsible for the customer relationship and renewals.",
+     "create": true,
+     "update": true,
+     "targets": [],
+     "nav": null,
+     "options": {}
+    },
+    "cb_customersince": {
+     "name": "cb_customersince",
+     "type": "DateTime",
+     "label": "Customer Since",
+     "description": "Date the customer placed their first order with Contoso Bikes.",
+     "create": true,
+     "update": true,
+     "targets": [],
+     "nav": null,
+     "options": {}
+    },
+    "cb_customertier": {
+     "name": "cb_customertier",
+     "type": "Picklist",
+     "label": "Customer Tier",
+     "description": "Commercial importance of the customer. Strategic = top accounts with executive sponsorship; Key = large recurring accounts; Growth = smaller accounts with expansion potential; Standard = everyone else.",
+     "create": true,
+     "update": true,
+     "targets": [],
+     "nav": null,
+     "options": {
+      "100000000": "Strategic",
+      "100000001": "Key",
+      "100000002": "Growth",
+      "100000003": "Standard"
+     }
+    },
+    "cb_salesregion": {
+     "name": "cb_salesregion",
+     "type": "Picklist",
+     "label": "Sales Region",
+     "description": "Contoso Bikes sales region that owns the customer relationship.",
+     "create": true,
+     "update": true,
+     "targets": [],
+     "nav": null,
+     "options": {
+      "100000000": "Nordics",
+      "100000001": "DACH",
+      "100000002": "Benelux",
+      "100000003": "UK & Ireland",
+      "100000004": "North America"
+     }
+    },
+    "cb_segment": {
+     "name": "cb_segment",
+     "type": "Picklist",
+     "label": "Segment",
+     "description": "Customer's line of business, which determines which bike models and agreement types typically apply.",
+     "create": true,
+     "update": true,
+     "targets": [],
+     "nav": null,
+     "options": {
+      "100000000": "Bike Rental & Sharing",
+      "100000001": "Corporate Fleet",
+      "100000002": "Delivery & Logistics",
+      "100000003": "Retail Dealer",
+      "100000004": "Public Sector"
+     }
+    },
+    "createdon": {
+     "name": "createdon",
+     "type": "DateTime",
+     "label": "Created On",
+     "description": "Shows the date and time when the record was created. The date and time are displayed in the time zone selected in Microsoft Dynamics 365 options.",
+     "create": false,
+     "update": false,
+     "targets": [],
+     "nav": null,
+     "options": {}
+    },
+    "customertypecode": {
+     "name": "customertypecode",
+     "type": "Picklist",
+     "label": "Relationship Type",
+     "description": "Select the category that best describes the relationship between the account and your organization.",
+     "create": true,
+     "update": true,
+     "targets": [],
+     "nav": null,
+     "options": {
+      "1": "Competitor",
+      "2": "Consultant",
+      "3": "Customer",
+      "4": "Investor",
+      "5": "Partner",
+      "6": "Influencer",
+      "7": "Press",
+      "8": "Prospect",
+      "9": "Reseller",
+      "10": "Supplier",
+      "11": "Vendor",
+      "12": "Other"
+     }
+    },
+    "description": {
+     "name": "description",
+     "type": "Memo",
+     "label": "Description",
+     "description": "Type additional information to describe the account, such as an excerpt from the company's website.",
+     "create": true,
+     "update": true,
+     "targets": [],
+     "nav": null,
+     "options": {}
+    },
+    "emailaddress1": {
+     "name": "emailaddress1",
+     "type": "String",
+     "label": "Email",
+     "description": "Type the primary email address for the account.",
+     "create": true,
+     "update": true,
+     "targets": [],
+     "nav": null,
+     "options": {}
+    },
+    "industrycode": {
+     "name": "industrycode",
+     "type": "Picklist",
+     "label": "Industry",
+     "description": "Select the account's primary industry for use in marketing segmentation and demographic analysis.",
+     "create": true,
+     "update": true,
+     "targets": [],
+     "nav": null,
+     "options": {
+      "1": "Accounting",
+      "2": "Agriculture and Non-petrol Natural Resource Extraction",
+      "3": "Broadcasting Printing and Publishing",
+      "4": "Brokers",
+      "5": "Building Supply Retail",
+      "6": "Business Services",
+      "7": "Consulting",
+      "8": "Consumer Services",
+      "9": "Design, Direction and Creative Management",
+      "10": "Distributors, Dispatchers and Processors",
+      "11": "Doctor's Offices and Clinics",
+      "12": "Durable Manufacturing",
+      "13": "Eating and Drinking Places",
+      "14": "Entertainment Retail",
+      "15": "Equipment Rental and Leasing",
+      "16": "Financial",
+      "17": "Food and Tobacco Processing",
+      "18": "Inbound Capital Intensive Processing",
+      "19": "Inbound Repair and Services",
+      "20": "Insurance",
+      "21": "Legal Services",
+      "22": "Non-Durable Merchandise Retail",
+      "23": "Outbound Consumer Service",
+      "24": "Petrochemical Extraction and Distribution",
+      "25": "Service Retail",
+      "26": "SIG Affiliations",
+      "27": "Social Services",
+      "28": "Special Outbound Trade Contractors",
+      "29": "Specialty Realty",
+      "30": "Transportation",
+      "31": "Utility Creation and Distribution",
+      "32": "Vehicle Retail",
+      "33": "Wholesale"
+     }
+    },
+    "modifiedon": {
+     "name": "modifiedon",
+     "type": "DateTime",
+     "label": "Modified On",
+     "description": "Shows the date and time when the record was last updated. The date and time are displayed in the time zone selected in Microsoft Dynamics 365 options.",
+     "create": false,
+     "update": false,
+     "targets": [],
+     "nav": null,
+     "options": {}
+    },
+    "name": {
+     "name": "name",
+     "type": "String",
+     "label": "Account Name",
+     "description": "Type the company or business name.",
+     "create": true,
+     "update": true,
+     "targets": [],
+     "nav": null,
+     "options": {}
+    },
+    "numberofemployees": {
+     "name": "numberofemployees",
+     "type": "Integer",
+     "label": "Number of Employees",
+     "description": "Type the number of employees that work at the account for use in marketing segmentation and demographic analysis.",
+     "create": true,
+     "update": true,
+     "targets": [],
+     "nav": null,
+     "options": {}
+    },
+    "parentaccountid": {
+     "name": "parentaccountid",
+     "type": "Lookup",
+     "label": "Parent Account",
+     "description": "Choose the parent account associated with this account to show parent and child businesses in reporting and analytics.",
+     "create": true,
+     "update": true,
+     "targets": [
+      "account"
+     ],
+     "nav": "parentaccountid",
+     "options": {}
+    },
+    "revenue": {
+     "name": "revenue",
+     "type": "Money",
+     "label": "Annual Revenue",
+     "description": "Type the annual revenue for the account, used as an indicator in financial performance analysis.",
+     "create": true,
+     "update": true,
+     "targets": [],
+     "nav": null,
+     "options": {}
+    },
+    "statecode": {
+     "name": "statecode",
+     "type": "State",
+     "label": "Status",
+     "description": "Shows whether the account is active or inactive. Inactive accounts are read-only and can't be edited unless they are reactivated.",
+     "create": false,
+     "update": true,
+     "targets": [],
+     "nav": null,
+     "options": {
+      "0": "Active",
+      "1": "Inactive"
+     }
+    },
+    "statuscode": {
+     "name": "statuscode",
+     "type": "Status",
+     "label": "Status Reason",
+     "description": "Select the account's status.",
+     "create": true,
+     "update": true,
+     "targets": [],
+     "nav": null,
+     "options": {
+      "1": "Active",
+      "2": "Inactive"
+     }
+    },
+    "telephone1": {
+     "name": "telephone1",
+     "type": "String",
+     "label": "Main Phone",
+     "description": "Type the main phone number for this account.",
+     "create": true,
+     "update": true,
+     "targets": [],
+     "nav": null,
+     "options": {}
+    },
+    "websiteurl": {
+     "name": "websiteurl",
+     "type": "String",
+     "label": "Website",
+     "description": "Type the account's website URL to get quick details about the company profile.",
+     "create": true,
+     "update": true,
+     "targets": [],
+     "nav": null,
+     "options": {}
+    }
+   }
+  },
+  "cb_bikemodel": {
+   "name": "cb_bikemodel",
+   "entity_set": "cb_bikemodels",
+   "primary_id": "cb_bikemodelid",
+   "primary_name": "cb_name",
+   "label": "Bike Model",
+   "description": "A bike model in the Contoso Bikes catalog. Sold on sales orders, built on production orders, and registered per serial number when delivered to customers.",
+   "columns": {
+    "cb_category": {
+     "name": "cb_category",
+     "type": "Picklist",
+     "label": "Category",
+     "description": "Product category of the model.",
+     "create": true,
+     "update": true,
+     "targets": [],
+     "nav": null,
+     "options": {
+      "100000000": "City E-Bike",
+      "100000001": "Cargo E-Bike",
+      "100000002": "Trekking E-Bike",
+      "100000003": "Commuter Bike",
+      "100000004": "Kids Bike"
+     }
+    },
+    "cb_launchdate": {
+     "name": "cb_launchdate",
+     "type": "DateTime",
+     "label": "Launch Date",
+     "description": "Date the model became available for order.",
+     "create": true,
+     "update": true,
+     "targets": [],
+     "nav": null,
+     "options": {}
+    },
+    "cb_lifecyclestatus": {
+     "name": "cb_lifecyclestatus",
+     "type": "Picklist",
+     "label": "Lifecycle Status",
+     "description": "Where the model is in its lifecycle. Only Active and Phase-out models can be ordered.",
+     "create": true,
+     "update": true,
+     "targets": [],
+     "nav": null,
+     "options": {
+      "100000000": "In Development",
+      "100000001": "Active",
+      "100000002": "Phase-out",
+      "100000003": "Discontinued"
+     }
+    },
+    "cb_listprice": {
+     "name": "cb_listprice",
+     "type": "Money",
+     "label": "List Price",
+     "description": "Standard list price per bike in SEK, before agreement discounts.",
+     "create": true,
+     "update": true,
+     "targets": [],
+     "nav": null,
+     "options": {}
+    },
+    "cb_modelcode": {
+     "name": "cb_modelcode",
+     "type": "String",
+     "label": "Model Code",
+     "description": "Unique model code, e.g. URB-E200. Used across all Contoso Bikes apps (orders, production, warranty) to refer to the model.",
+     "create": true,
+     "update": true,
+     "targets": [],
+     "nav": null,
+     "options": {}
+    },
+    "cb_modeldescription": {
+     "name": "cb_modeldescription",
+     "type": "Memo",
+     "label": "Description",
+     "description": "Marketing and technical description of the model and its intended use.",
+     "create": true,
+     "update": true,
+     "targets": [],
+     "nav": null,
+     "options": {}
+    },
+    "cb_motor": {
+     "name": "cb_motor",
+     "type": "String",
+     "label": "Motor & Battery",
+     "description": "Drive system summary, e.g. 250W mid-drive, 625Wh battery. Empty for non-electric models.",
+     "create": true,
+     "update": true,
+     "targets": [],
+     "nav": null,
+     "options": {}
+    },
+    "cb_name": {
+     "name": "cb_name",
+     "type": "String",
+     "label": "Model Name",
+     "description": "",
+     "create": true,
+     "update": true,
+     "targets": [],
+     "nav": null,
+     "options": {}
+    },
+    "cb_warrantymonths": {
+     "name": "cb_warrantymonths",
+     "type": "Integer",
+     "label": "Warranty (Months)",
+     "description": "Standard warranty period in months from delivery date.",
+     "create": true,
+     "update": true,
+     "targets": [],
+     "nav": null,
+     "options": {}
+    },
+    "createdon": {
+     "name": "createdon",
+     "type": "DateTime",
+     "label": "Created On",
+     "description": "Date and time when the record was created.",
+     "create": false,
+     "update": false,
+     "targets": [],
+     "nav": null,
+     "options": {}
+    },
+    "modifiedon": {
+     "name": "modifiedon",
+     "type": "DateTime",
+     "label": "Modified On",
+     "description": "Date and time when the record was modified.",
+     "create": false,
+     "update": false,
+     "targets": [],
+     "nav": null,
+     "options": {}
+    },
+    "statecode": {
+     "name": "statecode",
+     "type": "State",
+     "label": "Status",
+     "description": "Status of the Bike Model",
+     "create": false,
+     "update": true,
+     "targets": [],
+     "nav": null,
+     "options": {
+      "0": "Active",
+      "1": "Inactive"
+     }
+    },
+    "statuscode": {
+     "name": "statuscode",
+     "type": "Status",
+     "label": "Status Reason",
+     "description": "Reason for the status of the Bike Model",
+     "create": true,
+     "update": true,
+     "targets": [],
+     "nav": null,
+     "options": {
+      "1": "Active",
+      "2": "Inactive"
+     }
+    }
+   }
+  },
+  "cb_salesagreement": {
+   "name": "cb_salesagreement",
+   "entity_set": "cb_salesagreements",
+   "primary_id": "cb_salesagreementid",
+   "primary_name": "cb_name",
+   "label": "Sales Agreement",
+   "description": "A commercial agreement with a customer — fleet lease, volume purchase, service contract or dealer agreement. Tracks contract value, term and renewal outlook. Renewals of large agreements are the most important commercial events for Contoso Bikes.",
+   "columns": {
+    "cb_accountid": {
+     "name": "cb_accountid",
+     "type": "Lookup",
+     "label": "Customer",
+     "description": "",
+     "create": true,
+     "update": true,
+     "targets": [
+      "account"
+     ],
+     "nav": "cb_AccountId",
+     "options": {}
+    },
+    "cb_agreementnotes": {
+     "name": "cb_agreementnotes",
+     "type": "Memo",
+     "label": "Account Manager Notes",
+     "description": "Free-text notes from the account manager about the agreement, customer sentiment and renewal negotiations.",
+     "create": true,
+     "update": true,
+     "targets": [],
+     "nav": null,
+     "options": {}
+    },
+    "cb_agreementnumber": {
+     "name": "cb_agreementnumber",
+     "type": "String",
+     "label": "Agreement Number",
+     "description": "Unique agreement number, e.g. AGR-1001.",
+     "create": true,
+     "update": true,
+     "targets": [],
+     "nav": null,
+     "options": {}
+    },
+    "cb_agreementstatus": {
+     "name": "cb_agreementstatus",
+     "type": "Picklist",
+     "label": "Agreement Status",
+     "description": "Commercial status. Up for Renewal = within the renewal negotiation window (normally the last 120 days before the end date).",
+     "create": true,
+     "update": true,
+     "targets": [],
+     "nav": null,
+     "options": {
+      "100000000": "Draft",
+      "100000001": "Active",
+      "100000002": "Up for Renewal",
+      "100000003": "Renewed",
+      "100000004": "Expired",
+      "100000005": "Lost"
+     }
+    },
+    "cb_agreementtype": {
+     "name": "cb_agreementtype",
+     "type": "Picklist",
+     "label": "Agreement Type",
+     "description": "Fleet Lease = bikes leased to the customer incl. service; Volume Purchase = framework for discounted purchases; Service Contract = maintenance of an existing fleet; Dealer Agreement = resale terms for retail dealers.",
+     "create": true,
+     "update": true,
+     "targets": [],
+     "nav": null,
+     "options": {
+      "100000000": "Fleet Lease",
+      "100000001": "Volume Purchase",
+      "100000002": "Service Contract",
+      "100000003": "Dealer Agreement"
+     }
+    },
+    "cb_annualvalue": {
+     "name": "cb_annualvalue",
+     "type": "Money",
+     "label": "Annual Value",
+     "description": "Expected yearly revenue from the agreement in SEK.",
+     "create": true,
+     "update": true,
+     "targets": [],
+     "nav": null,
+     "options": {}
+    },
+    "cb_enddate": {
+     "name": "cb_enddate",
+     "type": "DateTime",
+     "label": "End Date",
+     "description": "Last day of the agreement; the renewal deadline.",
+     "create": true,
+     "update": true,
+     "targets": [],
+     "nav": null,
+     "options": {}
+    },
+    "cb_fleetsize": {
+     "name": "cb_fleetsize",
+     "type": "Integer",
+     "label": "Fleet Size",
+     "description": "Number of bikes covered by the agreement.",
+     "create": true,
+     "update": true,
+     "targets": [],
+     "nav": null,
+     "options": {}
+    },
+    "cb_name": {
+     "name": "cb_name",
+     "type": "String",
+     "label": "Agreement Name",
+     "description": "",
+     "create": true,
+     "update": true,
+     "targets": [],
+     "nav": null,
+     "options": {}
+    },
+    "cb_renewalprobability": {
+     "name": "cb_renewalprobability",
+     "type": "Integer",
+     "label": "Renewal Probability (%)",
+     "description": "Account manager's estimate (0-100) of how likely the customer is to renew.",
+     "create": true,
+     "update": true,
+     "targets": [],
+     "nav": null,
+     "options": {}
+    },
+    "cb_renewalrisk": {
+     "name": "cb_renewalrisk",
+     "type": "Picklist",
+     "label": "Renewal Risk",
+     "description": "Account manager's assessment of the risk of losing the renewal. High = customer has raised concerns or competitor is involved.",
+     "create": true,
+     "update": true,
+     "targets": [],
+     "nav": null,
+     "options": {
+      "100000000": "Low",
+      "100000001": "Medium",
+      "100000002": "High"
+     }
+    },
+    "cb_startdate": {
+     "name": "cb_startdate",
+     "type": "DateTime",
+     "label": "Start Date",
+     "description": "First day the agreement is in force.",
+     "create": true,
+     "update": true,
+     "targets": [],
+     "nav": null,
+     "options": {}
+    },
+    "cb_totalcontractvalue": {
+     "name": "cb_totalcontractvalue",
+     "type": "Money",
+     "label": "Total Contract Value",
+     "description": "Total revenue over the full agreement term in SEK.",
+     "create": true,
+     "update": true,
+     "targets": [],
+     "nav": null,
+     "options": {}
+    },
+    "createdon": {
+     "name": "createdon",
+     "type": "DateTime",
+     "label": "Created On",
+     "description": "Date and time when the record was created.",
+     "create": false,
+     "update": false,
+     "targets": [],
+     "nav": null,
+     "options": {}
+    },
+    "modifiedon": {
+     "name": "modifiedon",
+     "type": "DateTime",
+     "label": "Modified On",
+     "description": "Date and time when the record was modified.",
+     "create": false,
+     "update": false,
+     "targets": [],
+     "nav": null,
+     "options": {}
+    },
+    "statecode": {
+     "name": "statecode",
+     "type": "State",
+     "label": "Status",
+     "description": "Status of the Sales Agreement",
+     "create": false,
+     "update": true,
+     "targets": [],
+     "nav": null,
+     "options": {
+      "0": "Active",
+      "1": "Inactive"
+     }
+    },
+    "statuscode": {
+     "name": "statuscode",
+     "type": "Status",
+     "label": "Status Reason",
+     "description": "Reason for the status of the Sales Agreement",
+     "create": true,
+     "update": true,
+     "targets": [],
+     "nav": null,
+     "options": {
+      "1": "Active",
+      "2": "Inactive"
+     }
+    }
+   }
+  },
+  "cb_salesorder": {
+   "name": "cb_salesorder",
+   "entity_set": "cb_salesorders",
+   "primary_id": "cb_salesorderid",
+   "primary_name": "cb_ordernumber",
+   "label": "Sales Order",
+   "description": "A customer order for bikes. Each order is fulfilled by one or more production orders in Production Planning, which reference the sales order number.",
+   "columns": {
+    "cb_accountid": {
+     "name": "cb_accountid",
+     "type": "Lookup",
+     "label": "Customer",
+     "description": "",
+     "create": true,
+     "update": true,
+     "targets": [
+      "account"
+     ],
+     "nav": "cb_AccountId",
+     "options": {}
+    },
+    "cb_deliveryrisk": {
+     "name": "cb_deliveryrisk",
+     "type": "Picklist",
+     "label": "Delivery Risk",
+     "description": "Whether the promised delivery date will be met. At Risk = a production or supply problem threatens the date; Late = promised date has passed or certainly will be missed.",
+     "create": true,
+     "update": true,
+     "targets": [],
+     "nav": null,
+     "options": {
+      "100000000": "On Track",
+      "100000001": "At Risk",
+      "100000002": "Late"
+     }
+    },
+    "cb_orderdate": {
+     "name": "cb_orderdate",
+     "type": "DateTime",
+     "label": "Order Date",
+     "description": "Date the customer placed the order.",
+     "create": true,
+     "update": true,
+     "targets": [],
+     "nav": null,
+     "options": {}
+    },
+    "cb_ordernotes": {
+     "name": "cb_ordernotes",
+     "type": "Memo",
+     "label": "Order Notes",
+     "description": "Notes about the order, special requirements or delivery issues.",
+     "create": true,
+     "update": true,
+     "targets": [],
+     "nav": null,
+     "options": {}
+    },
+    "cb_ordernumber": {
+     "name": "cb_ordernumber",
+     "type": "String",
+     "label": "Order Number",
+     "description": "",
+     "create": true,
+     "update": true,
+     "targets": [],
+     "nav": null,
+     "options": {}
+    },
+    "cb_orderpriority": {
+     "name": "cb_orderpriority",
+     "type": "Picklist",
+     "label": "Priority",
+     "description": "Fulfilment priority. Critical = tied to a strategic account or a renewal.",
+     "create": true,
+     "update": true,
+     "targets": [],
+     "nav": null,
+     "options": {
+      "100000000": "Normal",
+      "100000001": "High",
+      "100000002": "Critical"
+     }
+    },
+    "cb_orderstatus": {
+     "name": "cb_orderstatus",
+     "type": "Picklist",
+     "label": "Order Status",
+     "description": "Fulfilment status of the order.",
+     "create": true,
+     "update": true,
+     "targets": [],
+     "nav": null,
+     "options": {
+      "100000000": "Draft",
+      "100000001": "Confirmed",
+      "100000002": "In Production",
+      "100000003": "Shipped",
+      "100000004": "Delivered",
+      "100000005": "Cancelled"
+     }
+    },
+    "cb_ordervalue": {
+     "name": "cb_ordervalue",
+     "type": "Money",
+     "label": "Order Value",
+     "description": "Total order value in SEK (sum of order lines).",
+     "create": true,
+     "update": true,
+     "targets": [],
+     "nav": null,
+     "options": {}
+    },
+    "cb_promiseddelivery": {
+     "name": "cb_promiseddelivery",
+     "type": "DateTime",
+     "label": "Promised Delivery",
+     "description": "Delivery date Contoso Bikes committed to.",
+     "create": true,
+     "update": true,
+     "targets": [],
+     "nav": null,
+     "options": {}
+    },
+    "cb_requesteddelivery": {
+     "name": "cb_requesteddelivery",
+     "type": "DateTime",
+     "label": "Requested Delivery",
+     "description": "Delivery date the customer asked for.",
+     "create": true,
+     "update": true,
+     "targets": [],
+     "nav": null,
+     "options": {}
+    },
+    "cb_salesagreementid": {
+     "name": "cb_salesagreementid",
+     "type": "Lookup",
+     "label": "Sales Agreement",
+     "description": "",
+     "create": true,
+     "update": true,
+     "targets": [
+      "cb_salesagreement"
+     ],
+     "nav": "cb_SalesAgreementId",
+     "options": {}
+    },
+    "createdon": {
+     "name": "createdon",
+     "type": "DateTime",
+     "label": "Created On",
+     "description": "Date and time when the record was created.",
+     "create": false,
+     "update": false,
+     "targets": [],
+     "nav": null,
+     "options": {}
+    },
+    "modifiedon": {
+     "name": "modifiedon",
+     "type": "DateTime",
+     "label": "Modified On",
+     "description": "Date and time when the record was modified.",
+     "create": false,
+     "update": false,
+     "targets": [],
+     "nav": null,
+     "options": {}
+    },
+    "statecode": {
+     "name": "statecode",
+     "type": "State",
+     "label": "Status",
+     "description": "Status of the Sales Order",
+     "create": false,
+     "update": true,
+     "targets": [],
+     "nav": null,
+     "options": {
+      "0": "Active",
+      "1": "Inactive"
+     }
+    },
+    "statuscode": {
+     "name": "statuscode",
+     "type": "Status",
+     "label": "Status Reason",
+     "description": "Reason for the status of the Sales Order",
+     "create": true,
+     "update": true,
+     "targets": [],
+     "nav": null,
+     "options": {
+      "1": "Active",
+      "2": "Inactive"
+     }
+    }
+   }
+  },
+  "cb_salesorderline": {
+   "name": "cb_salesorderline",
+   "entity_set": "cb_salesorderlines",
+   "primary_id": "cb_salesorderlineid",
+   "primary_name": "cb_name",
+   "label": "Sales Order Line",
+   "description": "One line on a sales order: a quantity of a specific bike model at an agreed unit price.",
+   "columns": {
+    "cb_bikemodelid": {
+     "name": "cb_bikemodelid",
+     "type": "Lookup",
+     "label": "Bike Model",
+     "description": "",
+     "create": true,
+     "update": true,
+     "targets": [
+      "cb_bikemodel"
+     ],
+     "nav": "cb_BikeModelId",
+     "options": {}
+    },
+    "cb_linenumber": {
+     "name": "cb_linenumber",
+     "type": "Integer",
+     "label": "Line Number",
+     "description": "Position of the line on the order (10, 20, 30...).",
+     "create": true,
+     "update": true,
+     "targets": [],
+     "nav": null,
+     "options": {}
+    },
+    "cb_linetotal": {
+     "name": "cb_linetotal",
+     "type": "Money",
+     "label": "Line Total",
+     "description": "Quantity x unit price in SEK.",
+     "create": true,
+     "update": true,
+     "targets": [],
+     "nav": null,
+     "options": {}
+    },
+    "cb_name": {
+     "name": "cb_name",
+     "type": "String",
+     "label": "Line",
+     "description": "",
+     "create": true,
+     "update": true,
+     "targets": [],
+     "nav": null,
+     "options": {}
+    },
+    "cb_quantity": {
+     "name": "cb_quantity",
+     "type": "Integer",
+     "label": "Quantity",
+     "description": "Number of bikes ordered.",
+     "create": true,
+     "update": true,
+     "targets": [],
+     "nav": null,
+     "options": {}
+    },
+    "cb_salesorderid": {
+     "name": "cb_salesorderid",
+     "type": "Lookup",
+     "label": "Sales Order",
+     "description": "",
+     "create": true,
+     "update": true,
+     "targets": [
+      "cb_salesorder"
+     ],
+     "nav": "cb_SalesOrderId",
+     "options": {}
+    },
+    "cb_unitprice": {
+     "name": "cb_unitprice",
+     "type": "Money",
+     "label": "Unit Price",
+     "description": "Agreed price per bike in SEK after discounts.",
+     "create": true,
+     "update": true,
+     "targets": [],
+     "nav": null,
+     "options": {}
+    },
+    "createdon": {
+     "name": "createdon",
+     "type": "DateTime",
+     "label": "Created On",
+     "description": "Date and time when the record was created.",
+     "create": false,
+     "update": false,
+     "targets": [],
+     "nav": null,
+     "options": {}
+    },
+    "modifiedon": {
+     "name": "modifiedon",
+     "type": "DateTime",
+     "label": "Modified On",
+     "description": "Date and time when the record was modified.",
+     "create": false,
+     "update": false,
+     "targets": [],
+     "nav": null,
+     "options": {}
+    },
+    "statecode": {
+     "name": "statecode",
+     "type": "State",
+     "label": "Status",
+     "description": "Status of the Sales Order Line",
+     "create": false,
+     "update": true,
+     "targets": [],
+     "nav": null,
+     "options": {
+      "0": "Active",
+      "1": "Inactive"
+     }
+    },
+    "statuscode": {
+     "name": "statuscode",
+     "type": "Status",
+     "label": "Status Reason",
+     "description": "Reason for the status of the Sales Order Line",
+     "create": true,
+     "update": true,
+     "targets": [],
+     "nav": null,
+     "options": {
+      "1": "Active",
+      "2": "Inactive"
+     }
+    }
+   }
+  },
+  "cb_registeredbike": {
+   "name": "cb_registeredbike",
+   "entity_set": "cb_registeredbikes",
+   "primary_id": "cb_registeredbikeid",
+   "primary_name": "cb_serialnumber",
+   "label": "Registered Bike",
+   "description": "An individual bike delivered to a customer, identified by its frame serial number. Warranty cases are logged against a registered bike.",
+   "columns": {
+    "cb_accountid": {
+     "name": "cb_accountid",
+     "type": "Lookup",
+     "label": "Owner Account",
+     "description": "",
+     "create": true,
+     "update": true,
+     "targets": [
+      "account"
+     ],
+     "nav": "cb_AccountId",
+     "options": {}
+    },
+    "cb_bikemodelid": {
+     "name": "cb_bikemodelid",
+     "type": "Lookup",
+     "label": "Bike Model",
+     "description": "",
+     "create": true,
+     "update": true,
+     "targets": [
+      "cb_bikemodel"
+     ],
+     "nav": "cb_BikeModelId",
+     "options": {}
+    },
+    "cb_bikestatus": {
+     "name": "cb_bikestatus",
+     "type": "Picklist",
+     "label": "Bike Status",
+     "description": "Current operational status of the bike at the customer.",
+     "create": true,
+     "update": true,
+     "targets": [],
+     "nav": null,
+     "options": {
+      "100000000": "In Service",
+      "100000001": "In Repair",
+      "100000002": "Returned",
+      "100000003": "Scrapped"
+     }
+    },
+    "cb_deliverydate": {
+     "name": "cb_deliverydate",
+     "type": "DateTime",
+     "label": "Delivery Date",
+     "description": "Date the bike was delivered to the customer; the warranty starts on this date.",
+     "create": true,
+     "update": true,
+     "targets": [],
+     "nav": null,
+     "options": {}
+    },
+    "cb_salesordernumber": {
+     "name": "cb_salesordernumber",
+     "type": "String",
+     "label": "Sales Order Number",
+     "description": "Number of the sales order the bike was delivered under (e.g. SO-24017), as used in Key Account Hub.",
+     "create": true,
+     "update": true,
+     "targets": [],
+     "nav": null,
+     "options": {}
+    },
+    "cb_serialnumber": {
+     "name": "cb_serialnumber",
+     "type": "String",
+     "label": "Serial Number",
+     "description": "",
+     "create": true,
+     "update": true,
+     "targets": [],
+     "nav": null,
+     "options": {}
+    },
+    "cb_warrantyexpiry": {
+     "name": "cb_warrantyexpiry",
+     "type": "DateTime",
+     "label": "Warranty Expiry",
+     "description": "Last day of the warranty (delivery date + the model's warranty months).",
+     "create": true,
+     "update": true,
+     "targets": [],
+     "nav": null,
+     "options": {}
+    },
+    "createdon": {
+     "name": "createdon",
+     "type": "DateTime",
+     "label": "Created On",
+     "description": "Date and time when the record was created.",
+     "create": false,
+     "update": false,
+     "targets": [],
+     "nav": null,
+     "options": {}
+    },
+    "modifiedon": {
+     "name": "modifiedon",
+     "type": "DateTime",
+     "label": "Modified On",
+     "description": "Date and time when the record was modified.",
+     "create": false,
+     "update": false,
+     "targets": [],
+     "nav": null,
+     "options": {}
+    },
+    "statecode": {
+     "name": "statecode",
+     "type": "State",
+     "label": "Status",
+     "description": "Status of the Registered Bike",
+     "create": false,
+     "update": true,
+     "targets": [],
+     "nav": null,
+     "options": {
+      "0": "Active",
+      "1": "Inactive"
+     }
+    },
+    "statuscode": {
+     "name": "statuscode",
+     "type": "Status",
+     "label": "Status Reason",
+     "description": "Reason for the status of the Registered Bike",
+     "create": true,
+     "update": true,
+     "targets": [],
+     "nav": null,
+     "options": {
+      "1": "Active",
+      "2": "Inactive"
+     }
+    }
+   }
+  },
+  "cb_warrantycase": {
+   "name": "cb_warrantycase",
+   "entity_set": "cb_warrantycases",
+   "primary_id": "cb_warrantycaseid",
+   "primary_name": "cb_casenumber",
+   "label": "Warranty Case",
+   "description": "A warranty claim from a customer about a failure on a delivered bike. Records which part failed (by part number), how severe it is and how it was resolved. Recurring failures of the same part number indicate a supplier quality problem.",
+   "columns": {
+    "cb_accountid": {
+     "name": "cb_accountid",
+     "type": "Lookup",
+     "label": "Customer",
+     "description": "",
+     "create": true,
+     "update": true,
+     "targets": [
+      "account"
+     ],
+     "nav": "cb_AccountId",
+     "options": {}
+    },
+    "cb_affectedbikes": {
+     "name": "cb_affectedbikes",
+     "type": "Integer",
+     "label": "Affected Bikes",
+     "description": "Number of bikes in the customer's fleet affected by this issue (a case can cover several bikes with the same failure).",
+     "create": true,
+     "update": true,
+     "targets": [],
+     "nav": null,
+     "options": {}
+    },
+    "cb_bikemodelid": {
+     "name": "cb_bikemodelid",
+     "type": "Lookup",
+     "label": "Bike Model",
+     "description": "",
+     "create": true,
+     "update": true,
+     "targets": [
+      "cb_bikemodel"
+     ],
+     "nav": "cb_BikeModelId",
+     "options": {}
+    },
+    "cb_casedescription": {
+     "name": "cb_casedescription",
+     "type": "Memo",
+     "label": "Problem Description",
+     "description": "Customer's description of the failure and the technician's findings.",
+     "create": true,
+     "update": true,
+     "targets": [],
+     "nav": null,
+     "options": {}
+    },
+    "cb_casenumber": {
+     "name": "cb_casenumber",
+     "type": "String",
+     "label": "Case Number",
+     "description": "",
+     "create": true,
+     "update": true,
+     "targets": [],
+     "nav": null,
+     "options": {}
+    },
+    "cb_casestatus": {
+     "name": "cb_casestatus",
+     "type": "Picklist",
+     "label": "Case Status",
+     "description": "Where the case is in handling. Waiting for Parts = repair blocked until replacement parts arrive.",
+     "create": true,
+     "update": true,
+     "targets": [],
+     "nav": null,
+     "options": {
+      "100000000": "New",
+      "100000001": "Investigating",
+      "100000002": "Waiting for Parts",
+      "100000003": "Resolved",
+      "100000004": "Rejected"
+     }
+    },
+    "cb_escalated": {
+     "name": "cb_escalated",
+     "type": "Boolean",
+     "label": "Escalated",
+     "description": "Yes when the customer or account manager has escalated the case to management.",
+     "create": true,
+     "update": true,
+     "targets": [],
+     "nav": null,
+     "options": {}
+    },
+    "cb_estimatedcost": {
+     "name": "cb_estimatedcost",
+     "type": "Money",
+     "label": "Estimated Cost",
+     "description": "Estimated warranty cost in SEK (parts, labour, logistics).",
+     "create": true,
+     "update": true,
+     "targets": [],
+     "nav": null,
+     "options": {}
+    },
+    "cb_failedpartnumber": {
+     "name": "cb_failedpartnumber",
+     "type": "String",
+     "label": "Failed Part Number",
+     "description": "Part number of the component that failed, e.g. BRK-220. Same part numbers as in Supplier & Procurement and in the bill of materials in Production Planning.",
+     "create": true,
+     "update": true,
+     "targets": [],
+     "nav": null,
+     "options": {}
+    },
+    "cb_failurecategory": {
+     "name": "cb_failurecategory",
+     "type": "Picklist",
+     "label": "Failure Category",
+     "description": "Which system of the bike failed.",
+     "create": true,
+     "update": true,
+     "targets": [],
+     "nav": null,
+     "options": {
+      "100000000": "Brakes",
+      "100000001": "Battery",
+      "100000002": "Motor & Controller",
+      "100000003": "Drivetrain",
+      "100000004": "Frame",
+      "100000005": "Wheels & Tyres",
+      "100000006": "Electronics & Lights",
+      "100000007": "Other"
+     }
+    },
+    "cb_registeredbikeid": {
+     "name": "cb_registeredbikeid",
+     "type": "Lookup",
+     "label": "Registered Bike",
+     "description": "",
+     "create": true,
+     "update": true,
+     "targets": [
+      "cb_registeredbike"
+     ],
+     "nav": "cb_RegisteredBikeId",
+     "options": {}
+    },
+    "cb_reportedon": {
+     "name": "cb_reportedon",
+     "type": "DateTime",
+     "label": "Reported On",
+     "description": "Date the customer reported the problem.",
+     "create": true,
+     "update": true,
+     "targets": [],
+     "nav": null,
+     "options": {}
+    },
+    "cb_resolution": {
+     "name": "cb_resolution",
+     "type": "Memo",
+     "label": "Resolution",
+     "description": "How the case was resolved, or why it was rejected.",
+     "create": true,
+     "update": true,
+     "targets": [],
+     "nav": null,
+     "options": {}
+    },
+    "cb_resolvedon": {
+     "name": "cb_resolvedon",
+     "type": "DateTime",
+     "label": "Resolved On",
+     "description": "Date the case was resolved or rejected.",
+     "create": true,
+     "update": true,
+     "targets": [],
+     "nav": null,
+     "options": {}
+    },
+    "cb_severity": {
+     "name": "cb_severity",
+     "type": "Picklist",
+     "label": "Severity",
+     "description": "Impact of the failure. Safety Critical = rider safety affected (e.g. braking); such bikes must be taken out of service.",
+     "create": true,
+     "update": true,
+     "targets": [],
+     "nav": null,
+     "options": {
+      "100000000": "Low",
+      "100000001": "Medium",
+      "100000002": "High",
+      "100000003": "Safety Critical"
+     }
+    },
+    "cb_sladue": {
+     "name": "cb_sladue",
+     "type": "DateTime",
+     "label": "SLA Due",
+     "description": "Date by which the case must be resolved under the customer's service terms.",
+     "create": true,
+     "update": true,
+     "targets": [],
+     "nav": null,
+     "options": {}
+    },
+    "cb_title": {
+     "name": "cb_title",
+     "type": "String",
+     "label": "Title",
+     "description": "Short summary of the reported problem.",
+     "create": true,
+     "update": true,
+     "targets": [],
+     "nav": null,
+     "options": {}
+    },
+    "createdon": {
+     "name": "createdon",
+     "type": "DateTime",
+     "label": "Created On",
+     "description": "Date and time when the record was created.",
+     "create": false,
+     "update": false,
+     "targets": [],
+     "nav": null,
+     "options": {}
+    },
+    "modifiedon": {
+     "name": "modifiedon",
+     "type": "DateTime",
+     "label": "Modified On",
+     "description": "Date and time when the record was modified.",
+     "create": false,
+     "update": false,
+     "targets": [],
+     "nav": null,
+     "options": {}
+    },
+    "statecode": {
+     "name": "statecode",
+     "type": "State",
+     "label": "Status",
+     "description": "Status of the Warranty Case",
+     "create": false,
+     "update": true,
+     "targets": [],
+     "nav": null,
+     "options": {
+      "0": "Active",
+      "1": "Inactive"
+     }
+    },
+    "statuscode": {
+     "name": "statuscode",
+     "type": "Status",
+     "label": "Status Reason",
+     "description": "Reason for the status of the Warranty Case",
+     "create": true,
+     "update": true,
+     "targets": [],
+     "nav": null,
+     "options": {
+      "1": "Active",
+      "2": "Inactive"
+     }
+    }
+   }
+  },
+  "cb_returnauthorization": {
+   "name": "cb_returnauthorization",
+   "entity_set": "cb_returnauthorizations",
+   "primary_id": "cb_returnauthorizationid",
+   "primary_name": "cb_rmanumber",
+   "label": "Return Authorization",
+   "description": "A return merchandise authorization (RMA) for defective parts sent back from the field, usually raised from a warranty case and claimed back from the supplier.",
+   "columns": {
+    "cb_creditamount": {
+     "name": "cb_creditamount",
+     "type": "Money",
+     "label": "Credit Amount",
+     "description": "Amount in SEK credited (or expected) from the supplier.",
+     "create": true,
+     "update": true,
+     "targets": [],
+     "nav": null,
+     "options": {}
+    },
+    "cb_partnumber": {
+     "name": "cb_partnumber",
+     "type": "String",
+     "label": "Part Number",
+     "description": "Part number being returned, e.g. BRK-220.",
+     "create": true,
+     "update": true,
+     "targets": [],
+     "nav": null,
+     "options": {}
+    },
+    "cb_quantity": {
+     "name": "cb_quantity",
+     "type": "Integer",
+     "label": "Quantity",
+     "description": "Number of parts returned.",
+     "create": true,
+     "update": true,
+     "targets": [],
+     "nav": null,
+     "options": {}
+    },
+    "cb_requestedon": {
+     "name": "cb_requestedon",
+     "type": "DateTime",
+     "label": "Requested On",
+     "description": "Date the return was requested.",
+     "create": true,
+     "update": true,
+     "targets": [],
+     "nav": null,
+     "options": {}
+    },
+    "cb_rmanumber": {
+     "name": "cb_rmanumber",
+     "type": "String",
+     "label": "RMA Number",
+     "description": "",
+     "create": true,
+     "update": true,
+     "targets": [],
+     "nav": null,
+     "options": {}
+    },
+    "cb_rmastatus": {
+     "name": "cb_rmastatus",
+     "type": "Picklist",
+     "label": "RMA Status",
+     "description": "Credited = the supplier has credited Contoso Bikes for the defective parts.",
+     "create": true,
+     "update": true,
+     "targets": [],
+     "nav": null,
+     "options": {
+      "100000000": "Requested",
+      "100000001": "Approved",
+      "100000002": "Received",
+      "100000003": "Credited",
+      "100000004": "Rejected"
+     }
+    },
+    "cb_warrantycaseid": {
+     "name": "cb_warrantycaseid",
+     "type": "Lookup",
+     "label": "Warranty Case",
+     "description": "",
+     "create": true,
+     "update": true,
+     "targets": [
+      "cb_warrantycase"
+     ],
+     "nav": "cb_WarrantyCaseId",
+     "options": {}
+    },
+    "createdon": {
+     "name": "createdon",
+     "type": "DateTime",
+     "label": "Created On",
+     "description": "Date and time when the record was created.",
+     "create": false,
+     "update": false,
+     "targets": [],
+     "nav": null,
+     "options": {}
+    },
+    "modifiedon": {
+     "name": "modifiedon",
+     "type": "DateTime",
+     "label": "Modified On",
+     "description": "Date and time when the record was modified.",
+     "create": false,
+     "update": false,
+     "targets": [],
+     "nav": null,
+     "options": {}
+    },
+    "statecode": {
+     "name": "statecode",
+     "type": "State",
+     "label": "Status",
+     "description": "Status of the Return Authorization",
+     "create": false,
+     "update": true,
+     "targets": [],
+     "nav": null,
+     "options": {
+      "0": "Active",
+      "1": "Inactive"
+     }
+    },
+    "statuscode": {
+     "name": "statuscode",
+     "type": "Status",
+     "label": "Status Reason",
+     "description": "Reason for the status of the Return Authorization",
+     "create": true,
+     "update": true,
+     "targets": [],
+     "nav": null,
+     "options": {
+      "1": "Active",
+      "2": "Inactive"
+     }
+    }
+   }
+  },
+  "cb_supplier": {
+   "name": "cb_supplier",
+   "entity_set": "cb_suppliers",
+   "primary_id": "cb_supplierid",
+   "primary_name": "cb_name",
+   "label": "Supplier",
+   "description": "A company that supplies components to Contoso Bikes. Supplier status and on-time delivery rate summarise how reliable the supplier is.",
+   "columns": {
+    "cb_contactemail": {
+     "name": "cb_contactemail",
+     "type": "String",
+     "label": "Contact Email",
+     "description": "Email of the supplier's key account contact.",
+     "create": true,
+     "update": true,
+     "targets": [],
+     "nav": null,
+     "options": {}
+    },
+    "cb_contactname": {
+     "name": "cb_contactname",
+     "type": "String",
+     "label": "Key Contact",
+     "description": "Name of the supplier's key account contact.",
+     "create": true,
+     "update": true,
+     "targets": [],
+     "nav": null,
+     "options": {}
+    },
+    "cb_country": {
+     "name": "cb_country",
+     "type": "String",
+     "label": "Country",
+     "description": "Country the supplier ships from.",
+     "create": true,
+     "update": true,
+     "targets": [],
+     "nav": null,
+     "options": {}
+    },
+    "cb_name": {
+     "name": "cb_name",
+     "type": "String",
+     "label": "Supplier Name",
+     "description": "",
+     "create": true,
+     "update": true,
+     "targets": [],
+     "nav": null,
+     "options": {}
+    },
+    "cb_ontimedelivery": {
+     "name": "cb_ontimedelivery",
+     "type": "Integer",
+     "label": "On-Time Delivery (%)",
+     "description": "Share of purchase order deliveries received on or before the promised date over the last 12 months.",
+     "create": true,
+     "update": true,
+     "targets": [],
+     "nav": null,
+     "options": {}
+    },
+    "cb_performancerating": {
+     "name": "cb_performancerating",
+     "type": "Integer",
+     "label": "Performance Rating",
+     "description": "Overall supplier score 1-5 combining quality, delivery and responsiveness (5 = best).",
+     "create": true,
+     "update": true,
+     "targets": [],
+     "nav": null,
+     "options": {}
+    },
+    "cb_suppliercategory": {
+     "name": "cb_suppliercategory",
+     "type": "Picklist",
+     "label": "Category",
+     "description": "Main commodity the supplier delivers.",
+     "create": true,
+     "update": true,
+     "targets": [],
+     "nav": null,
+     "options": {
+      "100000000": "Brakes",
+      "100000001": "Batteries",
+      "100000002": "Motors & Electronics",
+      "100000003": "Frames",
+      "100000004": "Drivetrain",
+      "100000005": "Wheels & Tyres",
+      "100000006": "Components"
+     }
+    },
+    "cb_suppliercode": {
+     "name": "cb_suppliercode",
+     "type": "String",
+     "label": "Supplier Code",
+     "description": "Unique supplier code, e.g. SUP-VTC.",
+     "create": true,
+     "update": true,
+     "targets": [],
+     "nav": null,
+     "options": {}
+    },
+    "cb_suppliernotes": {
+     "name": "cb_suppliernotes",
+     "type": "Memo",
+     "label": "Buyer Notes",
+     "description": "Buyer's notes about the supplier relationship, risks and ongoing issues.",
+     "create": true,
+     "update": true,
+     "targets": [],
+     "nav": null,
+     "options": {}
+    },
+    "cb_supplierstatus": {
+     "name": "cb_supplierstatus",
+     "type": "Picklist",
+     "label": "Supplier Status",
+     "description": "Approved = normal; On Watch = performance or quality concerns under review; Probation = formal improvement plan, no new parts awarded; Blocked = no new purchase orders.",
+     "create": true,
+     "update": true,
+     "targets": [],
+     "nav": null,
+     "options": {
+      "100000000": "Approved",
+      "100000001": "On Watch",
+      "100000002": "Probation",
+      "100000003": "Blocked"
+     }
+    },
+    "createdon": {
+     "name": "createdon",
+     "type": "DateTime",
+     "label": "Created On",
+     "description": "Date and time when the record was created.",
+     "create": false,
+     "update": false,
+     "targets": [],
+     "nav": null,
+     "options": {}
+    },
+    "modifiedon": {
+     "name": "modifiedon",
+     "type": "DateTime",
+     "label": "Modified On",
+     "description": "Date and time when the record was modified.",
+     "create": false,
+     "update": false,
+     "targets": [],
+     "nav": null,
+     "options": {}
+    },
+    "statecode": {
+     "name": "statecode",
+     "type": "State",
+     "label": "Status",
+     "description": "Status of the Supplier",
+     "create": false,
+     "update": true,
+     "targets": [],
+     "nav": null,
+     "options": {
+      "0": "Active",
+      "1": "Inactive"
+     }
+    },
+    "statuscode": {
+     "name": "statuscode",
+     "type": "Status",
+     "label": "Status Reason",
+     "description": "Reason for the status of the Supplier",
+     "create": true,
+     "update": true,
+     "targets": [],
+     "nav": null,
+     "options": {
+      "1": "Active",
+      "2": "Inactive"
+     }
+    }
+   }
+  },
+  "cb_part": {
+   "name": "cb_part",
+   "entity_set": "cb_parts",
+   "primary_id": "cb_partid",
+   "primary_name": "cb_partnumber",
+   "label": "Part",
+   "description": "A purchased component, identified by its part number. Part numbers are used across Contoso Bikes apps: bill of materials in Production Planning and failed parts on warranty cases.",
+   "columns": {
+    "cb_leadtimedays": {
+     "name": "cb_leadtimedays",
+     "type": "Integer",
+     "label": "Lead Time (Days)",
+     "description": "Standard supplier lead time from order to delivery.",
+     "create": true,
+     "update": true,
+     "targets": [],
+     "nav": null,
+     "options": {}
+    },
+    "cb_partcategory": {
+     "name": "cb_partcategory",
+     "type": "Picklist",
+     "label": "Part Category",
+     "description": "Which bike system the part belongs to (same categories as warranty failure categories).",
+     "create": true,
+     "update": true,
+     "targets": [],
+     "nav": null,
+     "options": {
+      "100000000": "Brakes",
+      "100000001": "Battery",
+      "100000002": "Motor & Controller",
+      "100000003": "Drivetrain",
+      "100000004": "Frame",
+      "100000005": "Wheels & Tyres",
+      "100000006": "Electronics & Lights",
+      "100000007": "Other"
+     }
+    },
+    "cb_partname": {
+     "name": "cb_partname",
+     "type": "String",
+     "label": "Part Name",
+     "description": "Descriptive name, e.g. Hydraulic Brake Caliper.",
+     "create": true,
+     "update": true,
+     "targets": [],
+     "nav": null,
+     "options": {}
+    },
+    "cb_partnumber": {
+     "name": "cb_partnumber",
+     "type": "String",
+     "label": "Part Number",
+     "description": "",
+     "create": true,
+     "update": true,
+     "targets": [],
+     "nav": null,
+     "options": {}
+    },
+    "cb_partstatus": {
+     "name": "cb_partstatus",
+     "type": "Picklist",
+     "label": "Part Status",
+     "description": "Quality Hold = incoming stock is quarantined pending a quality investigation; held stock cannot be used in production.",
+     "create": true,
+     "update": true,
+     "targets": [],
+     "nav": null,
+     "options": {
+      "100000000": "Active",
+      "100000001": "Quality Hold",
+      "100000002": "Obsolete"
+     }
+    },
+    "cb_safetystock": {
+     "name": "cb_safetystock",
+     "type": "Integer",
+     "label": "Safety Stock",
+     "description": "Minimum units to keep in stock. Stock on hand below safety stock means production is at risk.",
+     "create": true,
+     "update": true,
+     "targets": [],
+     "nav": null,
+     "options": {}
+    },
+    "cb_singlesource": {
+     "name": "cb_singlesource",
+     "type": "Boolean",
+     "label": "Single Source",
+     "description": "Yes when only one qualified supplier exists for the part — a supply risk.",
+     "create": true,
+     "update": true,
+     "targets": [],
+     "nav": null,
+     "options": {}
+    },
+    "cb_stockonhand": {
+     "name": "cb_stockonhand",
+     "type": "Integer",
+     "label": "Stock on Hand",
+     "description": "Usable units in the warehouse (excludes stock on quality hold).",
+     "create": true,
+     "update": true,
+     "targets": [],
+     "nav": null,
+     "options": {}
+    },
+    "cb_stockstatus": {
+     "name": "cb_stockstatus",
+     "type": "Picklist",
+     "label": "Stock Status",
+     "description": "Stock situation set by the supply planner, comparing stock on hand with safety stock.",
+     "create": true,
+     "update": true,
+     "targets": [],
+     "nav": null,
+     "options": {
+      "100000000": "OK",
+      "100000001": "Below Safety Stock",
+      "100000002": "Out of Stock"
+     }
+    },
+    "cb_supplierid": {
+     "name": "cb_supplierid",
+     "type": "Lookup",
+     "label": "Primary Supplier",
+     "description": "",
+     "create": true,
+     "update": true,
+     "targets": [
+      "cb_supplier"
+     ],
+     "nav": "cb_SupplierId",
+     "options": {}
+    },
+    "cb_unitcost": {
+     "name": "cb_unitcost",
+     "type": "Money",
+     "label": "Unit Cost",
+     "description": "Purchase price per unit in SEK.",
+     "create": true,
+     "update": true,
+     "targets": [],
+     "nav": null,
+     "options": {}
+    },
+    "createdon": {
+     "name": "createdon",
+     "type": "DateTime",
+     "label": "Created On",
+     "description": "Date and time when the record was created.",
+     "create": false,
+     "update": false,
+     "targets": [],
+     "nav": null,
+     "options": {}
+    },
+    "modifiedon": {
+     "name": "modifiedon",
+     "type": "DateTime",
+     "label": "Modified On",
+     "description": "Date and time when the record was modified.",
+     "create": false,
+     "update": false,
+     "targets": [],
+     "nav": null,
+     "options": {}
+    },
+    "statecode": {
+     "name": "statecode",
+     "type": "State",
+     "label": "Status",
+     "description": "Status of the Part",
+     "create": false,
+     "update": true,
+     "targets": [],
+     "nav": null,
+     "options": {
+      "0": "Active",
+      "1": "Inactive"
+     }
+    },
+    "statuscode": {
+     "name": "statuscode",
+     "type": "Status",
+     "label": "Status Reason",
+     "description": "Reason for the status of the Part",
+     "create": true,
+     "update": true,
+     "targets": [],
+     "nav": null,
+     "options": {
+      "1": "Active",
+      "2": "Inactive"
+     }
+    }
+   }
+  },
+  "cb_purchaseorder": {
+   "name": "cb_purchaseorder",
+   "entity_set": "cb_purchaseorders",
+   "primary_id": "cb_purchaseorderid",
+   "primary_name": "cb_ponumber",
+   "label": "Purchase Order",
+   "description": "An order from Contoso Bikes to a supplier for one part. Delay (days) shows how late the latest expected delivery is compared with the promised date.",
+   "columns": {
+    "cb_delaydays": {
+     "name": "cb_delaydays",
+     "type": "Integer",
+     "label": "Delay (Days)",
+     "description": "Days between promised date and expected (or actual) delivery date; 0 = on time.",
+     "create": true,
+     "update": true,
+     "targets": [],
+     "nav": null,
+     "options": {}
+    },
+    "cb_expecteddate": {
+     "name": "cb_expecteddate",
+     "type": "DateTime",
+     "label": "Expected Date",
+     "description": "Latest expected delivery date based on supplier updates.",
+     "create": true,
+     "update": true,
+     "targets": [],
+     "nav": null,
+     "options": {}
+    },
+    "cb_orderdate": {
+     "name": "cb_orderdate",
+     "type": "DateTime",
+     "label": "Order Date",
+     "description": "Date the PO was sent to the supplier.",
+     "create": true,
+     "update": true,
+     "targets": [],
+     "nav": null,
+     "options": {}
+    },
+    "cb_partid": {
+     "name": "cb_partid",
+     "type": "Lookup",
+     "label": "Part",
+     "description": "",
+     "create": true,
+     "update": true,
+     "targets": [
+      "cb_part"
+     ],
+     "nav": "cb_PartId",
+     "options": {}
+    },
+    "cb_ponotes": {
+     "name": "cb_ponotes",
+     "type": "Memo",
+     "label": "PO Notes",
+     "description": "Buyer notes, e.g. supplier explanations for delays.",
+     "create": true,
+     "update": true,
+     "targets": [],
+     "nav": null,
+     "options": {}
+    },
+    "cb_ponumber": {
+     "name": "cb_ponumber",
+     "type": "String",
+     "label": "PO Number",
+     "description": "",
+     "create": true,
+     "update": true,
+     "targets": [],
+     "nav": null,
+     "options": {}
+    },
+    "cb_postatus": {
+     "name": "cb_postatus",
+     "type": "Picklist",
+     "label": "PO Status",
+     "description": "Status of the purchase order.",
+     "create": true,
+     "update": true,
+     "targets": [],
+     "nav": null,
+     "options": {
+      "100000000": "Draft",
+      "100000001": "Sent",
+      "100000002": "Confirmed",
+      "100000003": "Partially Received",
+      "100000004": "Received",
+      "100000005": "Cancelled"
+     }
+    },
+    "cb_povalue": {
+     "name": "cb_povalue",
+     "type": "Money",
+     "label": "PO Value",
+     "description": "Total order value in SEK.",
+     "create": true,
+     "update": true,
+     "targets": [],
+     "nav": null,
+     "options": {}
+    },
+    "cb_promiseddate": {
+     "name": "cb_promiseddate",
+     "type": "DateTime",
+     "label": "Promised Date",
+     "description": "Delivery date the supplier committed to.",
+     "create": true,
+     "update": true,
+     "targets": [],
+     "nav": null,
+     "options": {}
+    },
+    "cb_quantity": {
+     "name": "cb_quantity",
+     "type": "Integer",
+     "label": "Quantity",
+     "description": "Units ordered.",
+     "create": true,
+     "update": true,
+     "targets": [],
+     "nav": null,
+     "options": {}
+    },
+    "cb_receiveddate": {
+     "name": "cb_receiveddate",
+     "type": "DateTime",
+     "label": "Received Date",
+     "description": "Date the goods were received in full.",
+     "create": true,
+     "update": true,
+     "targets": [],
+     "nav": null,
+     "options": {}
+    },
+    "cb_receivedquantity": {
+     "name": "cb_receivedquantity",
+     "type": "Integer",
+     "label": "Received Quantity",
+     "description": "Units received so far.",
+     "create": true,
+     "update": true,
+     "targets": [],
+     "nav": null,
+     "options": {}
+    },
+    "cb_supplierid": {
+     "name": "cb_supplierid",
+     "type": "Lookup",
+     "label": "Supplier",
+     "description": "",
+     "create": true,
+     "update": true,
+     "targets": [
+      "cb_supplier"
+     ],
+     "nav": "cb_SupplierId",
+     "options": {}
+    },
+    "cb_unitprice": {
+     "name": "cb_unitprice",
+     "type": "Money",
+     "label": "Unit Price",
+     "description": "Price per unit in SEK.",
+     "create": true,
+     "update": true,
+     "targets": [],
+     "nav": null,
+     "options": {}
+    },
+    "createdon": {
+     "name": "createdon",
+     "type": "DateTime",
+     "label": "Created On",
+     "description": "Date and time when the record was created.",
+     "create": false,
+     "update": false,
+     "targets": [],
+     "nav": null,
+     "options": {}
+    },
+    "modifiedon": {
+     "name": "modifiedon",
+     "type": "DateTime",
+     "label": "Modified On",
+     "description": "Date and time when the record was modified.",
+     "create": false,
+     "update": false,
+     "targets": [],
+     "nav": null,
+     "options": {}
+    },
+    "statecode": {
+     "name": "statecode",
+     "type": "State",
+     "label": "Status",
+     "description": "Status of the Purchase Order",
+     "create": false,
+     "update": true,
+     "targets": [],
+     "nav": null,
+     "options": {
+      "0": "Active",
+      "1": "Inactive"
+     }
+    },
+    "statuscode": {
+     "name": "statuscode",
+     "type": "Status",
+     "label": "Status Reason",
+     "description": "Reason for the status of the Purchase Order",
+     "create": true,
+     "update": true,
+     "targets": [],
+     "nav": null,
+     "options": {
+      "1": "Active",
+      "2": "Inactive"
+     }
+    }
+   }
+  },
+  "cb_qualityincident": {
+   "name": "cb_qualityincident",
+   "entity_set": "cb_qualityincidents",
+   "primary_id": "cb_qualityincidentid",
+   "primary_name": "cb_incidentnumber",
+   "label": "Quality Incident",
+   "description": "A supplier quality problem with a part (non-conformance), from detection through root cause and corrective action to closure.",
+   "columns": {
+    "cb_affectedquantity": {
+     "name": "cb_affectedquantity",
+     "type": "Integer",
+     "label": "Affected Quantity",
+     "description": "Number of parts suspected or confirmed defective.",
+     "create": true,
+     "update": true,
+     "targets": [],
+     "nav": null,
+     "options": {}
+    },
+    "cb_closedon": {
+     "name": "cb_closedon",
+     "type": "DateTime",
+     "label": "Closed On",
+     "description": "Date the incident was closed after verified corrective action.",
+     "create": true,
+     "update": true,
+     "targets": [],
+     "nav": null,
+     "options": {}
+    },
+    "cb_correctiveaction": {
+     "name": "cb_correctiveaction",
+     "type": "Memo",
+     "label": "Corrective Action",
+     "description": "Actions taken by the supplier and Contoso Bikes to fix and prevent the problem.",
+     "create": true,
+     "update": true,
+     "targets": [],
+     "nav": null,
+     "options": {}
+    },
+    "cb_defectdescription": {
+     "name": "cb_defectdescription",
+     "type": "Memo",
+     "label": "Defect Description",
+     "description": "What is wrong with the parts and how it shows.",
+     "create": true,
+     "update": true,
+     "targets": [],
+     "nav": null,
+     "options": {}
+    },
+    "cb_detectedon": {
+     "name": "cb_detectedon",
+     "type": "DateTime",
+     "label": "Detected On",
+     "description": "Date the problem was detected.",
+     "create": true,
+     "update": true,
+     "targets": [],
+     "nav": null,
+     "options": {}
+    },
+    "cb_detectionsource": {
+     "name": "cb_detectionsource",
+     "type": "Picklist",
+     "label": "Detected At",
+     "description": "Where the problem was found. Field Failure / Warranty = found through customer warranty cases.",
+     "create": true,
+     "update": true,
+     "targets": [],
+     "nav": null,
+     "options": {
+      "100000000": "Incoming Inspection",
+      "100000001": "Production Line",
+      "100000002": "Field Failure / Warranty"
+     }
+    },
+    "cb_incidentnumber": {
+     "name": "cb_incidentnumber",
+     "type": "String",
+     "label": "Incident Number",
+     "description": "",
+     "create": true,
+     "update": true,
+     "targets": [],
+     "nav": null,
+     "options": {}
+    },
+    "cb_partid": {
+     "name": "cb_partid",
+     "type": "Lookup",
+     "label": "Part",
+     "description": "",
+     "create": true,
+     "update": true,
+     "targets": [
+      "cb_part"
+     ],
+     "nav": "cb_PartId",
+     "options": {}
+    },
+    "cb_qiseverity": {
+     "name": "cb_qiseverity",
+     "type": "Picklist",
+     "label": "Severity",
+     "description": "Critical = safety risk or field failures at customers; Major = parts unusable, affects production; Minor = cosmetic or easily reworked.",
+     "create": true,
+     "update": true,
+     "targets": [],
+     "nav": null,
+     "options": {
+      "100000000": "Minor",
+      "100000001": "Major",
+      "100000002": "Critical"
+     }
+    },
+    "cb_qistatus": {
+     "name": "cb_qistatus",
+     "type": "Picklist",
+     "label": "Incident Status",
+     "description": "8D-style progress of the incident.",
+     "create": true,
+     "update": true,
+     "targets": [],
+     "nav": null,
+     "options": {
+      "100000000": "Open",
+      "100000001": "Containment",
+      "100000002": "Root Cause Analysis",
+      "100000003": "Corrective Action",
+      "100000004": "Closed"
+     }
+    },
+    "cb_rootcause": {
+     "name": "cb_rootcause",
+     "type": "Memo",
+     "label": "Root Cause",
+     "description": "Confirmed root cause (empty while still under analysis).",
+     "create": true,
+     "update": true,
+     "targets": [],
+     "nav": null,
+     "options": {}
+    },
+    "cb_supplierid": {
+     "name": "cb_supplierid",
+     "type": "Lookup",
+     "label": "Supplier",
+     "description": "",
+     "create": true,
+     "update": true,
+     "targets": [
+      "cb_supplier"
+     ],
+     "nav": "cb_SupplierId",
+     "options": {}
+    },
+    "cb_title": {
+     "name": "cb_title",
+     "type": "String",
+     "label": "Title",
+     "description": "Short description of the non-conformance.",
+     "create": true,
+     "update": true,
+     "targets": [],
+     "nav": null,
+     "options": {}
+    },
+    "createdon": {
+     "name": "createdon",
+     "type": "DateTime",
+     "label": "Created On",
+     "description": "Date and time when the record was created.",
+     "create": false,
+     "update": false,
+     "targets": [],
+     "nav": null,
+     "options": {}
+    },
+    "modifiedon": {
+     "name": "modifiedon",
+     "type": "DateTime",
+     "label": "Modified On",
+     "description": "Date and time when the record was modified.",
+     "create": false,
+     "update": false,
+     "targets": [],
+     "nav": null,
+     "options": {}
+    },
+    "statecode": {
+     "name": "statecode",
+     "type": "State",
+     "label": "Status",
+     "description": "Status of the Quality Incident",
+     "create": false,
+     "update": true,
+     "targets": [],
+     "nav": null,
+     "options": {
+      "0": "Active",
+      "1": "Inactive"
+     }
+    },
+    "statuscode": {
+     "name": "statuscode",
+     "type": "Status",
+     "label": "Status Reason",
+     "description": "Reason for the status of the Quality Incident",
+     "create": true,
+     "update": true,
+     "targets": [],
+     "nav": null,
+     "options": {
+      "1": "Active",
+      "2": "Inactive"
+     }
+    }
+   }
+  },
+  "cb_productionline": {
+   "name": "cb_productionline",
+   "entity_set": "cb_productionlines",
+   "primary_id": "cb_productionlineid",
+   "primary_name": "cb_name",
+   "label": "Production Line",
+   "description": "An assembly line in a Contoso Bikes plant, with its capacity and current utilization.",
+   "columns": {
+    "cb_dailycapacity": {
+     "name": "cb_dailycapacity",
+     "type": "Integer",
+     "label": "Daily Capacity",
+     "description": "Bikes the line can assemble per day at full staffing.",
+     "create": true,
+     "update": true,
+     "targets": [],
+     "nav": null,
+     "options": {}
+    },
+    "cb_linecode": {
+     "name": "cb_linecode",
+     "type": "String",
+     "label": "Line Code",
+     "description": "Unique line code, e.g. GOT-L1.",
+     "create": true,
+     "update": true,
+     "targets": [],
+     "nav": null,
+     "options": {}
+    },
+    "cb_linenotes": {
+     "name": "cb_linenotes",
+     "type": "Memo",
+     "label": "Line Notes",
+     "description": "Plant manager's notes on the line's current situation.",
+     "create": true,
+     "update": true,
+     "targets": [],
+     "nav": null,
+     "options": {}
+    },
+    "cb_linestatus": {
+     "name": "cb_linestatus",
+     "type": "Picklist",
+     "label": "Line Status",
+     "description": "Operational status. Reduced Capacity typically means parts shortages or staffing gaps.",
+     "create": true,
+     "update": true,
+     "targets": [],
+     "nav": null,
+     "options": {
+      "100000000": "Running",
+      "100000001": "Reduced Capacity",
+      "100000002": "Maintenance",
+      "100000003": "Stopped"
+     }
+    },
+    "cb_linetype": {
+     "name": "cb_linetype",
+     "type": "Picklist",
+     "label": "Line Type",
+     "description": "Which bike categories the line assembles.",
+     "create": true,
+     "update": true,
+     "targets": [],
+     "nav": null,
+     "options": {
+      "100000000": "City & Commuter",
+      "100000001": "Cargo",
+      "100000002": "Trekking & Kids"
+     }
+    },
+    "cb_name": {
+     "name": "cb_name",
+     "type": "String",
+     "label": "Line Name",
+     "description": "",
+     "create": true,
+     "update": true,
+     "targets": [],
+     "nav": null,
+     "options": {}
+    },
+    "cb_plant": {
+     "name": "cb_plant",
+     "type": "String",
+     "label": "Plant",
+     "description": "Plant (city) where the line is located.",
+     "create": true,
+     "update": true,
+     "targets": [],
+     "nav": null,
+     "options": {}
+    },
+    "cb_utilization": {
+     "name": "cb_utilization",
+     "type": "Integer",
+     "label": "Utilization (%)",
+     "description": "Current share of capacity in use over the last two weeks.",
+     "create": true,
+     "update": true,
+     "targets": [],
+     "nav": null,
+     "options": {}
+    },
+    "createdon": {
+     "name": "createdon",
+     "type": "DateTime",
+     "label": "Created On",
+     "description": "Date and time when the record was created.",
+     "create": false,
+     "update": false,
+     "targets": [],
+     "nav": null,
+     "options": {}
+    },
+    "modifiedon": {
+     "name": "modifiedon",
+     "type": "DateTime",
+     "label": "Modified On",
+     "description": "Date and time when the record was modified.",
+     "create": false,
+     "update": false,
+     "targets": [],
+     "nav": null,
+     "options": {}
+    },
+    "statecode": {
+     "name": "statecode",
+     "type": "State",
+     "label": "Status",
+     "description": "Status of the Production Line",
+     "create": false,
+     "update": true,
+     "targets": [],
+     "nav": null,
+     "options": {
+      "0": "Active",
+      "1": "Inactive"
+     }
+    },
+    "statuscode": {
+     "name": "statuscode",
+     "type": "Status",
+     "label": "Status Reason",
+     "description": "Reason for the status of the Production Line",
+     "create": true,
+     "update": true,
+     "targets": [],
+     "nav": null,
+     "options": {
+      "1": "Active",
+      "2": "Inactive"
+     }
+    }
+   }
+  },
+  "cb_productionorder": {
+   "name": "cb_productionorder",
+   "entity_set": "cb_productionorders",
+   "primary_id": "cb_productionorderid",
+   "primary_name": "cb_productionordernumber",
+   "label": "Production Order",
+   "description": "An order to assemble a quantity of one bike model on a production line, normally to fulfil a customer sales order (referenced by sales order number). Forecast finish later than planned finish means the customer delivery is at risk.",
+   "columns": {
+    "cb_bikemodelid": {
+     "name": "cb_bikemodelid",
+     "type": "Lookup",
+     "label": "Bike Model",
+     "description": "",
+     "create": true,
+     "update": true,
+     "targets": [
+      "cb_bikemodel"
+     ],
+     "nav": "cb_BikeModelId",
+     "options": {}
+    },
+    "cb_completedquantity": {
+     "name": "cb_completedquantity",
+     "type": "Integer",
+     "label": "Completed Quantity",
+     "description": "Bikes finished so far.",
+     "create": true,
+     "update": true,
+     "targets": [],
+     "nav": null,
+     "options": {}
+    },
+    "cb_forecastfinish": {
+     "name": "cb_forecastfinish",
+     "type": "DateTime",
+     "label": "Forecast Finish",
+     "description": "Planner's current estimate of the completion date. Later than planned finish = delay.",
+     "create": true,
+     "update": true,
+     "targets": [],
+     "nav": null,
+     "options": {}
+    },
+    "cb_holdreason": {
+     "name": "cb_holdreason",
+     "type": "Picklist",
+     "label": "Hold Reason",
+     "description": "Why the order is on hold or at risk.",
+     "create": true,
+     "update": true,
+     "targets": [],
+     "nav": null,
+     "options": {
+      "100000000": "None",
+      "100000001": "Missing Parts",
+      "100000002": "Quality Hold",
+      "100000003": "Capacity",
+      "100000004": "Engineering Change"
+     }
+    },
+    "cb_missingpartnumber": {
+     "name": "cb_missingpartnumber",
+     "type": "String",
+     "label": "Missing Part Number",
+     "description": "Part number that is short and blocking or delaying the order, e.g. MC-48V (see Supplier & Procurement).",
+     "create": true,
+     "update": true,
+     "targets": [],
+     "nav": null,
+     "options": {}
+    },
+    "cb_plannedfinish": {
+     "name": "cb_plannedfinish",
+     "type": "DateTime",
+     "label": "Planned Finish",
+     "description": "Scheduled completion date (planned so the bikes can ship by the sales order's promised delivery).",
+     "create": true,
+     "update": true,
+     "targets": [],
+     "nav": null,
+     "options": {}
+    },
+    "cb_plannedstart": {
+     "name": "cb_plannedstart",
+     "type": "DateTime",
+     "label": "Planned Start",
+     "description": "Scheduled start of assembly.",
+     "create": true,
+     "update": true,
+     "targets": [],
+     "nav": null,
+     "options": {}
+    },
+    "cb_productionlineid": {
+     "name": "cb_productionlineid",
+     "type": "Lookup",
+     "label": "Production Line",
+     "description": "",
+     "create": true,
+     "update": true,
+     "targets": [
+      "cb_productionline"
+     ],
+     "nav": "cb_ProductionLineId",
+     "options": {}
+    },
+    "cb_productionnotes": {
+     "name": "cb_productionnotes",
+     "type": "Memo",
+     "label": "Planner Notes",
+     "description": "Production planner's notes about status, shortages and recovery plans.",
+     "create": true,
+     "update": true,
+     "targets": [],
+     "nav": null,
+     "options": {}
+    },
+    "cb_productionordernumber": {
+     "name": "cb_productionordernumber",
+     "type": "String",
+     "label": "Production Order Number",
+     "description": "",
+     "create": true,
+     "update": true,
+     "targets": [],
+     "nav": null,
+     "options": {}
+    },
+    "cb_productionstatus": {
+     "name": "cb_productionstatus",
+     "type": "Picklist",
+     "label": "Production Status",
+     "description": "Status of the production order. On Hold = cannot proceed (see hold reason).",
+     "create": true,
+     "update": true,
+     "targets": [],
+     "nav": null,
+     "options": {
+      "100000000": "Planned",
+      "100000001": "Released",
+      "100000002": "In Progress",
+      "100000003": "On Hold",
+      "100000004": "Completed",
+      "100000005": "Cancelled"
+     }
+    },
+    "cb_quantity": {
+     "name": "cb_quantity",
+     "type": "Integer",
+     "label": "Quantity",
+     "description": "Bikes to build.",
+     "create": true,
+     "update": true,
+     "targets": [],
+     "nav": null,
+     "options": {}
+    },
+    "cb_salesordernumber": {
+     "name": "cb_salesordernumber",
+     "type": "String",
+     "label": "Sales Order Number",
+     "description": "Customer sales order this production order fulfils, e.g. SO-24051 (see Key Account Hub). Empty for stock builds.",
+     "create": true,
+     "update": true,
+     "targets": [],
+     "nav": null,
+     "options": {}
+    },
+    "createdon": {
+     "name": "createdon",
+     "type": "DateTime",
+     "label": "Created On",
+     "description": "Date and time when the record was created.",
+     "create": false,
+     "update": false,
+     "targets": [],
+     "nav": null,
+     "options": {}
+    },
+    "modifiedon": {
+     "name": "modifiedon",
+     "type": "DateTime",
+     "label": "Modified On",
+     "description": "Date and time when the record was modified.",
+     "create": false,
+     "update": false,
+     "targets": [],
+     "nav": null,
+     "options": {}
+    },
+    "statecode": {
+     "name": "statecode",
+     "type": "State",
+     "label": "Status",
+     "description": "Status of the Production Order",
+     "create": false,
+     "update": true,
+     "targets": [],
+     "nav": null,
+     "options": {
+      "0": "Active",
+      "1": "Inactive"
+     }
+    },
+    "statuscode": {
+     "name": "statuscode",
+     "type": "Status",
+     "label": "Status Reason",
+     "description": "Reason for the status of the Production Order",
+     "create": true,
+     "update": true,
+     "targets": [],
+     "nav": null,
+     "options": {
+      "1": "Active",
+      "2": "Inactive"
+     }
+    }
+   }
+  },
+  "cb_bomline": {
+   "name": "cb_bomline",
+   "entity_set": "cb_bomlines",
+   "primary_id": "cb_bomlineid",
+   "primary_name": "cb_name",
+   "label": "BOM Line",
+   "description": "One component in a bike model's bill of materials: which part number, how many per bike, and whether it is critical (no bike can be finished without it).",
+   "columns": {
+    "cb_bikemodelid": {
+     "name": "cb_bikemodelid",
+     "type": "Lookup",
+     "label": "Bike Model",
+     "description": "",
+     "create": true,
+     "update": true,
+     "targets": [
+      "cb_bikemodel"
+     ],
+     "nav": "cb_BikeModelId",
+     "options": {}
+    },
+    "cb_criticalcomponent": {
+     "name": "cb_criticalcomponent",
+     "type": "Boolean",
+     "label": "Critical Component",
+     "description": "Yes when the bike cannot be finished or shipped without this part (no substitute).",
+     "create": true,
+     "update": true,
+     "targets": [],
+     "nav": null,
+     "options": {}
+    },
+    "cb_name": {
+     "name": "cb_name",
+     "type": "String",
+     "label": "BOM Line",
+     "description": "",
+     "create": true,
+     "update": true,
+     "targets": [],
+     "nav": null,
+     "options": {}
+    },
+    "cb_partdescription": {
+     "name": "cb_partdescription",
+     "type": "String",
+     "label": "Part Description",
+     "description": "Short description of the component.",
+     "create": true,
+     "update": true,
+     "targets": [],
+     "nav": null,
+     "options": {}
+    },
+    "cb_partnumber": {
+     "name": "cb_partnumber",
+     "type": "String",
+     "label": "Part Number",
+     "description": "Part number of the component (see Supplier & Procurement), e.g. BRK-220.",
+     "create": true,
+     "update": true,
+     "targets": [],
+     "nav": null,
+     "options": {}
+    },
+    "cb_quantityper": {
+     "name": "cb_quantityper",
+     "type": "Integer",
+     "label": "Quantity per Bike",
+     "description": "How many of this part go into one bike.",
+     "create": true,
+     "update": true,
+     "targets": [],
+     "nav": null,
+     "options": {}
+    },
+    "createdon": {
+     "name": "createdon",
+     "type": "DateTime",
+     "label": "Created On",
+     "description": "Date and time when the record was created.",
+     "create": false,
+     "update": false,
+     "targets": [],
+     "nav": null,
+     "options": {}
+    },
+    "modifiedon": {
+     "name": "modifiedon",
+     "type": "DateTime",
+     "label": "Modified On",
+     "description": "Date and time when the record was modified.",
+     "create": false,
+     "update": false,
+     "targets": [],
+     "nav": null,
+     "options": {}
+    },
+    "statecode": {
+     "name": "statecode",
+     "type": "State",
+     "label": "Status",
+     "description": "Status of the BOM Line",
+     "create": false,
+     "update": true,
+     "targets": [],
+     "nav": null,
+     "options": {
+      "0": "Active",
+      "1": "Inactive"
+     }
+    },
+    "statuscode": {
+     "name": "statuscode",
+     "type": "Status",
+     "label": "Status Reason",
+     "description": "Reason for the status of the BOM Line",
+     "create": true,
+     "update": true,
+     "targets": [],
+     "nav": null,
+     "options": {
+      "1": "Active",
+      "2": "Inactive"
+     }
+    }
+   }
+  }
+ }
+}

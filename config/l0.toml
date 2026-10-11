@@ -1,0 +1,38 @@
+[model]
+model_id = "nvidia/nemotron-3.5-asr-streaming-0.6b"
+locale = "en-US"
+device = "cuda:0"
+precision = "bf16"
+latency_tier_ms = 320
+
+[second_pass]
+enabled = true
+mode = "full_context"
+model_id = ""
+timeout_ms = 1500
+
+[utterance]
+preroll_ms = 800
+tail_flush_ms = 300
+min_press_ms = 150
+
+[vad]
+pause_ms = 400
+margin_db = 10.0
+min_threshold_db = -55.0
+onset_ms = 60
+
+[audio]
+device_match = ""
+target_sr = 16000
+resampler = "soxr"
+block_ms = 10
+
+[persistence]
+enabled = false
+dir = "./_capture"
+
+[telemetry]
+log_level = "INFO"
+log_format = "json"
+metrics = true

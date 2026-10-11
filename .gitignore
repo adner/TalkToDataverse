@@ -1,0 +1,22 @@
+# Keys, referenced by key_file in config/sot.toml
+foundrykey*.txt
+*.key
+.env
+apps/presentation/.env.local
+
+# Local output
+logs/
+exports/
+_capture/
+
+# Build and tool output
+__pycache__/
+*.pyc
+.venv/
+.pytest_cache/
+.ruff_cache/
+dist/
+.vscode/
+apps/presentation/node_modules/
+apps/presentation/.next/
+apps/presentation/tsconfig.tsbuildinfo

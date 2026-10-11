@@ -1,0 +1,64 @@
+# L1 is the per-word Decision-1 loop; L2 runs one gpt-6-luna flight per cut segment with the
+# typed Contoso Bikes record tools. L0 (the microphone and ASR) is configured in config/l0.toml.
+[l1]
+# One [[l1.decision_pools]] entry per Microsoft-Decision-1 deployment, each with its own
+# requests-per-minute quota; decision_rpm is the budget per pool.
+decision_rpm = 54
+complete_threshold = 0.7
+write_pause_ms = 1000
+schema_threshold = 0.5
+ui_threshold = 0.7
+reserve_ms = 300
+settle_ms = 150
+
+[[l1.decision_pools]]
+endpoint = "https://<your-foundry-resource>.services.ai.azure.com/providers/microsoft/v1/systemone"
+key_file = "foundrykey.txt"
+
+[[l1.decision_pools]]
+endpoint = "https://<your-foundry-resource>.services.ai.azure.com/providers/microsoft/v1/systemone"
+key_file = "foundrykey2.txt"
+
+[l2]
+host = "127.0.0.1"
+port = 8000
+model = "gpt-6-luna"
+reasoning_effort = "low"
+endpoint = "https://<your-foundry-resource>.services.ai.azure.com/openai/v1/"
+key_file = "foundrykey.txt"
+dataverse_url = "https://<your-org>.crm.dynamics.com"
+tenant_id = "<your-entra-tenant-id>"
+environment_name = "Contoso Bikes"
+schema_path = "data/contoso/schema.json"
+exports_dir = "exports"
+question_timeout_seconds = 300
+max_tool_calls = 16
+graceful_shutdown_timeout_seconds = 3
+thread_context_timeout_seconds = 120
+
+# "Open that record" opens it in this app, in a dialog on the stage. Key Account Hub has the
+# customer, agreement, order and catalogue forms.
+[l2.record_app]
+name = "Key Account Hub"
+app_id = "<model-driven-app-id>"
+tables = ["account", "cb_salesagreement", "cb_salesorder", "cb_salesorderline", "cb_bikemodel"]
+
+[l3]
+origins = [
+  "http://localhost:3000",
+  "http://127.0.0.1:3000",
+]
+
+[diagnostics]
+enabled = true
+level = "DEBUG"
+console = true
+file = true
+file_path = "logs/sot-diagnostics.jsonl"
+max_file_bytes = 10000000
+backup_count = 5
+memory_events = 10000
+include_transcripts = true
+include_intent_payloads = true
+include_tool_payloads = true
+include_responses = true
