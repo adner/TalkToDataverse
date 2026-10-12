@@ -1,4 +1,4 @@
-# SpeedOfThought
+# Talk to Dataverse at the speed of thought
 
 Speak to Dataverse at the speed of thought. Hold to talk and say several requests in a row; each
 one takes off as an agent run while you are still speaking.
