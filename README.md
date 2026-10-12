@@ -18,6 +18,8 @@ port 3000.
 How the layers work, and the tools, events and settings in detail, is in
 [`Architecture/architecture.md`](Architecture/architecture.md).
 
+Here's a YouTube video that demonstrates the solution: [https://www.youtube.com/watch?v=bfwdq9QeKs4](https://www.youtube.com/watch?v=bfwdq9QeKs4)
+
 ## Prerequisites
 
 | What | Notes |
